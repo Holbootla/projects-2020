@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    cursor: default;
 }
 
 body {
@@ -7,6 +8,17 @@ body {
     margin: auto;
     font-family: 'Roboto', sans-serif;
     align-content: center;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+a:hover, .recent-page {
+    cursor: pointer;
+    text-shadow: 0px 1px 10px rgba(255, 255, 255, 0.9);
+    text-decoration: underline;
 }
 
 header {
@@ -35,6 +47,20 @@ header nav ul li {
 
 .logo {
     margin: 0 15px;
+}
+
+.logo:hover,
+.soc-icon:hover {
+    animation-name: rotate;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    cursor: pointer;
+}
+
+@keyframes rotate {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
 }
 
 h1 {
@@ -66,27 +92,27 @@ h3 {
     margin-top: 20px;
 }
 
-#social {
+.social {
     display: flex;
     justify-content: center;
     margin-top: 183px;
 }
 
-#social img {
+.social a {
     margin: 0 15px;
 }
 
-#subscr {
+.subscr {
     color: #ffffff;
 }
 
-#top {
+.top {
     background-image: url(assets/bg-image-01.png);
     height: 744px;
     color: #ffffff;
 }
 
-#top p {
+.top p {
     margin-top: 20px;
     text-align: center;
     font-weight: normal;
@@ -94,30 +120,31 @@ h3 {
     line-height: 140%;
 }
 
-#second {
+.second {
     height: 842px;
     display: flex;
     justify-content: space-between;
     padding: 0px 270px 0px 268px;
 }
 
-#second div {
+.second div {
     margin: 120px 0 140px 0;
 }
 
-#second div h2 {
+.second div h2 {
     margin-top: 175px;
 }
 
-#second p {
+.second p {
     margin-top: 20px;
     font-weight: normal;
     font-size: 14px;
     line-height: 140%;
     width: 407px;
+    color: #373737;;
 }
 
-#third {
+.third {
     height: 384px;
     background-color: #f5f6f7;
     display: flex;
@@ -125,18 +152,18 @@ h3 {
     overflow: hidden;
 }
 
-#slider ul {
+.slider ul {
     display: flex;
     padding: 0;
 }
 
-#slider ul li {
+.slider ul li {
     flex-shrink: 0;
     list-style: none;
     margin-right: 30px;
 }
 
-#third-one {
+.third-one {
     width: 290px;
     margin-right: 139px;
     display: flex;
@@ -146,7 +173,7 @@ h3 {
     align-items: center;
 }
 
-#third-one p {
+.third-one p {
     margin-top: 10px;
     font-weight: normal;
     font-size: 14px;
@@ -155,53 +182,54 @@ h3 {
     color: #4E4E4E;
 }
 
-#counter {
+.counter {
     height: 120px;
     background-color: #f5f6f7;
     display: flex;
 }
 
-#counter div {
+.counter div {
     margin-left: 1252px;
     margin-top: 80px;
 }
 
-#counter ul {
+.counter ul {
     display: flex;
     padding: 0;
 }
 
-#counter ul li {
-    list-style: none;  
+.counter ul li {
+    list-style: none; 
+    margin: 0 5px; 
 }
 
-#fourth {
+.fourth {
     height: 842px;
     display: flex;
     padding: 0 378px 0 269px;
 }
 
-#fourth div {
+.fourth div {
     margin-top: 120px;
     margin-bottom: 140px;
 }
 
-#fourth-one {
+.fourth-one {
     margin-left: 139px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-#fourth-one p {
-    font-weight: 500;
+.fourth-one p {
+    font-weight: normal;
     font-size: 14px;
     line-height: 140%;
     color: #373737;
     margin-top: 20px;
 }
 
-#subscribe {
+.subscribe {
     height: 598px;
     background-image: url(assets/bg-image-02.png);
     display: flex;
@@ -209,11 +237,11 @@ h3 {
     align-items: center;
 }
 
-#subscribe h2 {
+.subscribe h2 {
     margin-top: 217px;
 }
 
-#subscribe div {
+.subscribe div {
     display: flex;
     flex-direction: row;
 
@@ -221,8 +249,6 @@ h3 {
 
 form {
     display: flex;
-    border: none;
-    padding: 0;
 }
 
 input {
@@ -238,6 +264,10 @@ input {
     padding: 0 0 0 20px;
 }
 
+input:hover {
+    cursor: text;
+}
+
 form button {
     width: 66px;
     height: 46px;
@@ -251,7 +281,19 @@ form button {
     margin-top: 30px;
 }
 
-#apps {
+form button:hover {
+    background-color: #009cc2;
+    cursor: pointer;
+    border: none;
+}
+
+form button:hover img {
+    cursor: pointer;
+    width: 60%;
+    height: 60%;
+}
+
+.apps {
     height: 468px;
     background-color: #f5f6f7;
     display: flex;
@@ -259,11 +301,11 @@ form button {
     align-items: center;
 }
 
-#apps h2 {
+.apps h2 {
     margin-top: 120px;
 }
 
-#apps p {
+.apps p {
     margin-top: 20px;
     width: 483px;
     font-weight: normal;
@@ -273,11 +315,11 @@ form button {
     text-align: center;
 }
 
-#app-buttons {
+.app-buttons {
     display: flex;
 }
 
-#app-buttons div {
+.app-buttons div {
     display: inline;
     margin: 30px 15px 0 15px;
     display: inline-flex;
@@ -285,7 +327,7 @@ form button {
     justify-content: center;
 }
 
-#market {
+.market-1 {
     width: 128px;
     height: 50px;
     background-color: #00AFDB;
@@ -302,7 +344,7 @@ form button {
     margin: 0;
 }
 
-#market-2 {
+.market-2 {
     width: 60px;
     height: 50px;
     background-color: #009cc2;
@@ -315,21 +357,29 @@ form button {
     margin: 0;
 }
 
+.market:hover button {
+    background-color: #009cc2;
+    cursor: pointer;
+} 
+
+.market:hover button img {
+    animation-name: rotate;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    cursor: pointer;
+} 
+
 footer {
     height: 174px;
-    background: #000000;
+    background-color: #000000;
     display: flex;
     flex-direction: row;
     align-items: center;
     padding-bottom: 10px;
 }
 
-a {
-    color: #ffffff;
-    text-decoration: none;
-}
-
-#copyright {
+.copyright {
     color: #818181;
     font-style: normal;
     font-weight: normal;
@@ -339,13 +389,13 @@ a {
     margin-left: 448px;
 }
 
-#nav-bottom {
+.nav-bottom {
     display: flex;
     margin-left: 150px;
 
 }
 
-#nav-bottom ul {
+.nav-bottom ul {
     display: flex;
     list-style: none;
     flex-direction: row;
@@ -354,7 +404,7 @@ a {
     padding: 0px;
 }
 
-#nav-bottom ul li {
+.nav-bottom ul li {
     margin: 0 10px;
     font-weight: normal;
     font-size: 14px;
@@ -363,7 +413,7 @@ a {
     color: #ffffff;
 }
 
-#divisor {
+.divisor {
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -371,7 +421,7 @@ a {
     color: #4e4e4e;
 }
 
-#bottom-logo {
+.bottom-logo {
     margin-left: 382px;
 }
 
@@ -386,9 +436,15 @@ button {
     line-height: 16px;
     text-transform: uppercase;
     margin-top: 30px;
+    outline: none;
 }
 
-#button-top {
+button:hover {
+    background-color: #009cc2;
+    cursor: pointer;
+}
+
+.button-top {
     display: flex;
     justify-content: center;
 }

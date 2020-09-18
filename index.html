@@ -11,67 +11,67 @@
     <title>WebDev</title>
   </head>
   <body>
-    <div id="top">
+    <div class="top">
       <header>
         <nav>
           <ul>
-            <li><a href="">About</a></li>
-						<li><a href="">Syllabus</a></li>
-						<li class=><img class="logo" src="assets/logo.svg" alt="Logo" /></li>
-            <li><a href="">Projects</a></li>
-            <li><a href="">FAQ</a></li>
+            <li><a class="recent-page" href="#">About</a></li>
+						<li><a href="#">Syllabus</a></li>
+						<li><a href="#"><img class="logo" src="assets/logo.svg" alt="Logo" /></a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">FAQ</a></li>
           </ul>
         </nav>
       </header>
-      <div id="in-top">
+      <div class="in-top">
         <h1>Your life is WebDev</h1>
         <p>
 					Whatever the approach to development may be, the final<br>
 					program must satisfy some fundamental properties
 				</p>
-				<div id="button-top">
-					<button>Get started</button>
+				<div class="button-top">
+					<button type="button" onclick="document.location='#'">Get started</button>
 				</div>
       </div>
-      <div id="social">
-        <img src="assets/icon-mail.svg" alt="mail" />
-        <img src="assets/icon-fb.svg" alt="facebook" />
-        <img src="assets/icon-inst.svg" alt="instagram" />
-        <img src="assets/icon-yt.svg" alt="youtube" />
+      <div class="social">
+        <a href="#"><img class="soc-icon" src="assets/icon-mail.svg" alt="mail" /></a>
+        <a href="#"><img class="soc-icon" src="assets/icon-fb.svg" alt="facebook" /></a>
+        <a href="#"><img class="soc-icon"  src="assets/icon-inst.svg" alt="instagram" /></a>
+        <a href="#"><img class="soc-icon"  src="assets/icon-yt.svg" alt="youtube" /></a>
       </div>
     </div>
 
-    <div id="second">
+    <div class="second">
       <div>
 				<h2>Rappresent your idea with<br>
 					a smart design</h2>
         <p>
           Tasks accompanying and related to programming include: testing,
-          debugging, source code maintenance, implementation of build systems,
+          debugging, source code maintenance, <strong>implementation of build systems</strong>,
           and management of derived artifacts, such as the machine code of
           computer programs.
         </p>
-        <button>Get started</button>
+        <button type="button" onclick="document.location='#'">Get started</button>
       </div>
       <div>
         <img src="assets/content-image-1.png" alt="Idea" />
       </div>
     </div>
 
-		<div id="counter">
+		<div class="counter">
 			<div>
 				<ul>
-					<li><</li>
+					<li class="arrow"><img src="assets/arrow-left.svg" alt="previous"></li>
 					<li>1</li>
-					<li>/</li>
+					<li class="slash">/</li>
 					<li>5</li>
-					<li>></li>
+					<li class="arrow"><img src="assets/arrow-right.svg" alt="next"></li>
 				</ul>
 			</div>
 		</div>
 
-    <div id="third">
-      <div id=third-one>
+    <div class="third">
+      <div class=third-one>
         <img src="assets/icon-girl.png" alt="girl" />
         <h3>Our community</h3>
         <p>
@@ -80,7 +80,7 @@
           hacker in common language
         </p>
       </div>
-      <div id="slider">
+      <div class="slider">
 				<ul>
 					<li><img src="assets/slider-item-01.png" alt="Work!" /></li>
 					<li><img src="assets/slider-item-02.png" alt="Work hard!" /></li>
@@ -89,64 +89,64 @@
       </div>
     </div>
 
-    <div id="fourth">
+    <div class="fourth">
       <div>
         <img src="assets/content-image-2.png" alt="coding" />
       </div>
-      <div id="fourth-one">
+      <div class="fourth-one">
         <h2>Implement right code</h2>
         <p>
-          These might be considered part of the programming process, but often
+          These might be considered part of the <strong>programming process</strong>, but often
           the term software development is used for this larger process with the
           term programming, implementation
         </p>
-        <button>Learn more</button>
+        <button type="button" onclick="document.location='#'">Learn more</button>
       </div>
     </div>
 
-    <div id="subscribe">
-      <h2 id="subscr">Sign up for our newsletter</h2>
+    <div class="subscribe">
+      <h2 class="subscr">Sign up for our newsletter</h2>
       <div>
-        <form id="email" action="">
+        <form action="">
 					<p><input type="email" placeholder="E-mail" required/></p>
-					<button type="submit" form="email"><img src="assets/icon-submit.svg" alt="submit" /></button>
+					<button type="submit"><img src="assets/icon-submit.svg" alt="submit" /></button>
         </form>
       </div>
     </div>
 
-    <div id="apps">
+    <div class="apps">
       <h2>Download the app</h2>
       <p>
         Machine code was the language of early programs, written in the
         instruction set of the particular machine, often in binary notation.
       </p>
-      <div id="app-buttons">
-        <div>
-					<button id="market">Apple Store</button>
-					<button id="market-2"><img src="assets/icon-apple.svg" alt="apple" /></button>
+      <div class="app-buttons">
+        <div class="market">
+					<button type="button" class="market-1" onclick="document.location='#'">Apple Store</button>
+					<button type="button" class="market-2" onclick="document.location='#'"><img src="assets/icon-apple.svg" alt="apple" /></button>
         </div>
-        <div>
-					<button id="market">Play Market</button>
-					<button id="market-2"><img src="assets/icon-android.svg" alt="android" /></button>
+        <div class="market">
+					<button type="button" class="market-1" onclick="document.location='#'">Play Market</button>
+					<button type="button" class="market-2" onclick="document.location='#'"><img src="assets/icon-android.svg" alt="android" /></button>
         </div>
       </div>
     </div>
 
     <footer>
-      <nav id="nav-bottom">
+      <nav class="nav-bottom">
 				<ul>
-					<li><a href="">Credits</a></li>
-					<li><p id="divisor">|</p></li>
-					<li><a href="">Privacy</a></li>
-					<li><p id="divisor">|</p></li>
-					<li><a href="">Our teams</a></li>
+					<li><a href="#">Credits</a></li>
+					<li><p class="divisor">|</p></li>
+					<li><a href="#">Privacy</a></li>
+					<li><p class="divisor">|</p></li>
+					<li><a href="#">Our teams</a></li>
 				</ul>
       </nav>
-      <div id="bottom-logo">
-        <img src="assets/logo.svg" alt="Logo" />
+      <div class="bottom-logo">
+        <a href="#"><img class="logo" src="assets/logo.svg" alt="Logo" /></a>
       </div>
       <div>
-        <p id="copyright">by Holbootla for RSS at 2020</p>
+        <p class="copyright">by Holbootla for RSS at 2020</p>
       </div>
     </footer>
   </body>
