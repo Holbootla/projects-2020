@@ -1,125 +1,153 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <title>WebDev</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="top">
-        <header>
-            <div>
-                <a href="">About</a>
-            </div>
-            <div>
-                <a href="">Syllabus</a>
-            </div>
-            <div>
-                <img src="assets/logo.svg" alt="Logo">
-            </div>
-            <div>
-                <a href="">Projects</a>
-            </div>
-            <div>
-                <a href="">FAQ</a>
-            </div>
-        </header>
-        <div>
-            <h1>Your life is WebDev</h1>
-            <p>Whatever the approach to development may be, the final program must 
-               satisfy some fundamental properties
-            </p>
-            <button>Get started</button>
-        </div>
-        <div id="social">
-            <img src="assets/icon-mail.svg" alt="mail">
-            <img src="assets/icon-fb.svg" alt="facebook">
-            <img src="assets/icon-inst.svg" alt="instagram">
-            <img src="assets/icon-yt.svg" alt="youtube">
-        </div>
-    </div> 
-    
-  <div id="second">
-      <div>
-          <h2>Rappresent your life with a  simple photo</h2>
-          <p>Tasks accompanying and related to programming include: testing, 
-             debugging, source code maintenance, implementation of build systems, 
-             and management of derived artifacts, such as the machine code of computer programs.</p>
-          <button>Get started</button>
+      <header>
+        <nav>
+          <ul>
+            <li><a href="">About</a></li>
+						<li><a href="">Syllabus</a></li>
+						<li class=><img class="logo" src="assets/logo.svg" alt="Logo" /></li>
+            <li><a href="">Projects</a></li>
+            <li><a href="">FAQ</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div id="in-top">
+        <h1>Your life is WebDev</h1>
+        <p>
+					Whatever the approach to development may be, the final<br>
+					program must satisfy some fundamental properties
+				</p>
+				<div id="button-top">
+					<button>Get started</button>
+				</div>
       </div>
-      <div>
-          <img src="assets/content-image-1.png" alt="Idea">
+      <div id="social">
+        <img src="assets/icon-mail.svg" alt="mail" />
+        <img src="assets/icon-fb.svg" alt="facebook" />
+        <img src="assets/icon-inst.svg" alt="instagram" />
+        <img src="assets/icon-yt.svg" alt="youtube" />
       </div>
-  </div>
+    </div>
 
-  <div id="third">
+    <div id="second">
       <div>
-          <img src="assets/icon-gilr.png" alt="girl">
-          <h3>Our community</h3>
-          <p>A hacker is any skilled computer expert that uses their technical knowledge to overcome a problem, 
-             but it can also mean a security hacker in common language</p>
+				<h2>Rappresent your idea with<br>
+					a smart design</h2>
+        <p>
+          Tasks accompanying and related to programming include: testing,
+          debugging, source code maintenance, implementation of build systems,
+          and management of derived artifacts, such as the machine code of
+          computer programs.
+        </p>
+        <button>Get started</button>
       </div>
       <div>
-          <img src="assets/slider-item-01.png" alt="Work!">
-          <img src="assets/slider-item-02.png" alt="Work hard!">
-          <img src="assets/slider-item-03.png" alt="Work harder!">
+        <img src="assets/content-image-1.png" alt="Idea" />
       </div>
-  </div>
+    </div>
 
-  <div id="fourth">
-      <div>
-          <img src="assets/content-image-2.png" alt="coding">
-      </div>
-      <div>
-          <h2>Implement right code</h2>
-          <p>These might be considered part of the programming process, but often the term software 
-             development is used for this larger process with the term programming, implementation</p>
-          <button>Learn more</button>
-      </div>
-  </div>
+		<div id="counter">
+			<div>
+				<ul>
+					<li><</li>
+					<li>1</li>
+					<li>/</li>
+					<li>5</li>
+					<li>></li>
+				</ul>
+			</div>
+		</div>
 
-  <div id="subscribe">
+    <div id="third">
+      <div id=third-one>
+        <img src="assets/icon-girl.png" alt="girl" />
+        <h3>Our community</h3>
+        <p>
+          A hacker is any skilled computer expert that uses their technical
+          knowledge to overcome a problem, but it can also mean a security
+          hacker in common language
+        </p>
+      </div>
+      <div id="slider">
+				<ul>
+					<li><img src="assets/slider-item-01.png" alt="Work!" /></li>
+					<li><img src="assets/slider-item-02.png" alt="Work hard!" /></li>
+					<li><img src="assets/slider-item-03.png" alt="Work harder!" /></li>
+				</ul>
+      </div>
+    </div>
+
+    <div id="fourth">
+      <div>
+        <img src="assets/content-image-2.png" alt="coding" />
+      </div>
+      <div id="fourth-one">
+        <h2>Implement right code</h2>
+        <p>
+          These might be considered part of the programming process, but often
+          the term software development is used for this larger process with the
+          term programming, implementation
+        </p>
+        <button>Learn more</button>
+      </div>
+    </div>
+
+    <div id="subscribe">
       <h2 id="subscr">Sign up for our newsletter</h2>
       <div>
-          <form id="email" action="">
-              <p><input type="text" placeholder="E-mail"></p>
-          </form>
-          <button type="submit" form="email"><img src="" alt=""></button>
+        <form id="email" action="">
+					<p><input type="email" placeholder="E-mail" required/></p>
+					<button type="submit" form="email"><img src="assets/icon-submit.svg" alt="submit" /></button>
+        </form>
       </div>
-  </div>
+    </div>
 
-  <div id="apps">
+    <div id="apps">
       <h2>Download the app</h2>
-      <p>Machine code was the language of early programs, written in the instruction 
-         set of the particular machine, often in binary notation.</p>
+      <p>
+        Machine code was the language of early programs, written in the
+        instruction set of the particular machine, often in binary notation.
+      </p>
       <div id="app-buttons">
-          <div>
-            <button>Apple Store</button>
-            <img src="assets/icon-apple.svg" alt="apple">
-          </div>
-          <div>
-            <button>Play Market</button>
-            <img src="assets/icon-android.svg" alt="android">
-          </div>
+        <div>
+					<button id="market">Apple Store</button>
+					<button id="market-2"><img src="assets/icon-apple.svg" alt="apple" /></button>
+        </div>
+        <div>
+					<button id="market">Play Market</button>
+					<button id="market-2"><img src="assets/icon-android.svg" alt="android" /></button>
+        </div>
       </div>
-  </div>
+    </div>
 
-  <footer>
-      <div id="nav-bottom">
-          <a href="">Credits</a>
-          <p id="divisor">|</p>
-          <a href="">Privacy</a>
-          <p id="divisor">|</p>
-          <a href="">Our teams</a>
+    <footer>
+      <nav id="nav-bottom">
+				<ul>
+					<li><a href="">Credits</a></li>
+					<li><p id="divisor">|</p></li>
+					<li><a href="">Privacy</a></li>
+					<li><p id="divisor">|</p></li>
+					<li><a href="">Our teams</a></li>
+				</ul>
+      </nav>
+      <div id="bottom-logo">
+        <img src="assets/logo.svg" alt="Logo" />
       </div>
       <div>
-          <img src="assets/logo.svg" alt="Logo">
+        <p id="copyright">by Holbootla for RSS at 2020</p>
       </div>
-      <div>
-          <p id="copyright">by Holbootla for RSS at 2020</p>
-      </div>
-  </footer>
-</body>
+    </footer>
+  </body>
 </html>
