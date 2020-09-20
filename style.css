@@ -51,16 +51,11 @@ header nav ul li {
 
 .logo:hover,
 .soc-icon:hover {
-    animation-name: rotate;
-    animation-duration: 2s;
+    cursor: pointer;
+    animation-name:  mov-mov;
+    animation-duration: 0.3s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-    cursor: pointer;
-}
-
-@keyframes rotate {
-    0% {transform: rotate(0deg);}
-    100% {transform: rotate(360deg);}
 }
 
 h1 {
@@ -164,13 +159,14 @@ h3 {
 }
 
 .third-one {
-    width: 290px;
+    width: 298px;
     margin-right: 139px;
     display: flex;
     flex-shrink: 0;
     margin-top: 35px;
     flex-direction: column;
     align-items: center;
+    padding: 0;
 }
 
 .third-one p {
@@ -189,7 +185,7 @@ h3 {
 }
 
 .counter div {
-    margin-left: 1252px;
+    margin-left: 1234px;
     margin-top: 80px;
 
 }
@@ -202,18 +198,27 @@ h3 {
 
 .counter ul li {
     list-style: none; 
-    margin: 0 5px; 
+    margin: 0; 
+}
+
+.arrow {
+    margin: 0 14px;
+}
+
+.slash {
+    margin: 0 10px;
 }
 
 .arrow:hover {
     cursor: pointer;
-    animation-name: arrows;
-    animation-duration: 0.5s;
+    animation-name:  mov-mov;
+    animation-duration: 0.3s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
+    opacity: 0.5;
 }
 
-@keyframes arrows {
+@keyframes mov-mov {
     0% {transform: rotate(-15deg);}
     50% {transform: rotate(15deg);}
     100% {transform: rotate(-15deg);}
@@ -246,7 +251,7 @@ h3 {
 }
 
 .subscribe {
-    height: 598px;
+    height: 524px;
     background-image: url(assets/bg-image-02.png);
     display: flex;
     flex-direction: column;
@@ -254,7 +259,7 @@ h3 {
 }
 
 .subscribe h2 {
-    margin-top: 217px;
+    margin-top: 200px;
 }
 
 .subscribe div {
@@ -303,14 +308,8 @@ form button:hover {
     border: none;
 }
 
-form button:hover img {
-    cursor: pointer;
-    width: 60%;
-    height: 60%;
-}
-
 .apps {
-    height: 468px;
+    height: 464px;
     background-color: #f5f6f7;
     display: flex;
     flex-direction: column;
@@ -379,20 +378,19 @@ form button:hover img {
 } 
 
 .market:hover button img {
-    animation-name: rotate;
-    animation-duration: 2s;
+    cursor: pointer;
+    animation-name:  mov-mov;
+    animation-duration: 0.3s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-    cursor: pointer;
 } 
 
 footer {
-    height: 174px;
+    height: 185px;
     background-color: #000000;
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-bottom: 10px;
 }
 
 .copyright {
