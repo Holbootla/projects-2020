@@ -72,6 +72,7 @@ for (let i = 0; i < operations.length; i++) {
    
 }
 
+
 const decimalPress = () => {
     let localDecimalMemory = display.value;
     if (newNumber) {
