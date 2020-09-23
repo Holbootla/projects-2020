@@ -1,4 +1,5 @@
 const numbers = document.querySelectorAll('[data-number]');
+const decimal = document.querySelector('[data-decimal]');
 const operations = document.querySelectorAll('[data-operation');
 const allClear = document.querySelector('[data-all-clear]');
 const del = document.querySelector('[data-delete]');
@@ -20,7 +21,6 @@ const numberPress = (symbol) => {
             display.value += symbol;
         }
     }
-    console.log(`Клик по кнопке с номером ${symbol}`);
 };
 
 const operationPress = (op) => {
@@ -38,22 +38,23 @@ const operationPress = (op) => {
             currentNumber *= parseFloat(localOperationMemory);
         } else if (pendingOperation === '/') {
             currentNumber /= parseFloat(localOperationMemory);
+        } else if (pendingOperation === '^') {
+            currentNumber = Math.pow(currentNumber, parseFloat(localOperationMemory));
+        } else if (pendingOperation === '√') {
+            currentNumber = Math.pow(currentNumber, 1 / parseFloat(localOperationMemory));
         } else {
             currentNumber = parseFloat(localOperationMemory);
         }
         display.value = currentNumber;
         pendingOperation = op;
     }
-    console.log(`Клик по кнопке с операцией ${op}`);
 };
 
 const acPress = () => {
     display.value = '0';
-    console.log('Клик по кнопке AC');
-};
-
-const delPress = () => {
-    console.log('Клик по кнопке DEL');
+    newNumber = true;
+    currentNumber = 0;
+    pendingOperation = '';
 };
 
 for (let i = 0; i < numbers.length; i++) {
@@ -71,9 +72,22 @@ for (let i = 0; i < operations.length; i++) {
    
 }
 
+const decimalPress = () => {
+    let localDecimalMemory = display.value;
+    if (newNumber) {
+        localDecimalMemory = '0.';
+        newNumber = false;
+    } else {
+        if (localDecimalMemory.indexOf('.') === -1) {
+            localDecimalMemory += '.';
+        }
+    }
+    display.value = localDecimalMemory;
+};
+
 allClear.addEventListener('click', acPress);
 
-del.addEventListener('click', delPress);
+decimal.addEventListener('click', decimalPress);
 
 
 
