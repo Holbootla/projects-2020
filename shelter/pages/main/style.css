@@ -434,6 +434,10 @@ header {
     color: #545454;
 }
 
+.credit-card-number:hover {
+    cursor: pointer;
+}
+
 .donation-description {
     font-family: Arial;
     font-style: italic;
@@ -470,6 +474,10 @@ footer {
     display: flex;
     align-items: center;
     column-gap: 20px;
+}
+
+.footer-content-contacts *:hover {
+    cursor: pointer;
 }
 
 .contacts-text {
