@@ -250,7 +250,6 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    width: 100%;
 }
 
 .start-screen-img img {
@@ -274,6 +273,10 @@ header {
 
 .about-img {
     display: flex;
+}
+
+.about-img img {
+    width: 100%;
 }
 
 .about-content {
@@ -325,6 +328,7 @@ header {
     display: flex;
     justify-content: center;
     column-gap: 9rem;
+    overflow: hidden;
 }
 
 .pet-card {
@@ -407,6 +411,10 @@ header {
 
 .donation-img {
     display: flex;
+}
+
+.donation-img img {
+    width: 100%;
 }
 
 .donation-content {
@@ -501,4 +509,8 @@ footer {
 .footer-img {
     display: flex;
     align-items: flex-end;
+}
+
+.footer-img img {
+    width: 100%;
 }
