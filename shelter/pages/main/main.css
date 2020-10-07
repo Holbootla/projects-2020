@@ -139,7 +139,7 @@ h5 {
 
 header {
     max-width: 120rem;
-    padding: 6rem 0;;
+    padding: 6rem 0;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -213,7 +213,7 @@ header {
 }
 
 .start-screen {
-    max-width: 1200px;
+    max-width: 120rem;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -227,14 +227,7 @@ header {
     align-items: baseline;
     max-width: 46rem;
     padding-bottom: 8rem;
-}
-
-.start-screen-content :nth-child(1) {
-    margin-bottom: 4.2rem;
-}
-
-.start-screen-content :nth-child(2) {
-    margin-bottom: 4.1rem;
+    row-gap: 4.2rem;
 }
 
 .start-screen-content-title {
@@ -403,7 +396,7 @@ header {
     max-width: 120rem;
     margin: 0 auto;
     display: flex;
-    padding: 8.2rem 0 10.1rem 0;
+    padding: 8.1rem 0 10rem 0;
     align-items: center;
     justify-content: center;
     column-gap: 3rem;
@@ -475,17 +468,23 @@ footer {
 
 .footer-content {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 1.6rem 0 6rem 0;
+    column-gap: 16rem;
 }
 
 .footer-content-1 {
-    max-width: 28.7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.6rem 0 6rem 0;
+    max-width: 27.9rem;
 }
 
 .footer-content-2 {
-    max-width: 31rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.6rem 0 6rem 0;
+    max-width: 30.2rem;
 }
 
 .footer-content-contacts {
@@ -512,5 +511,151 @@ footer {
 }
 
 .footer-img img {
-    width: 100%;
+    max-width: 31rem;
+}
+
+
+@media (max-width: 1279px) {
+    .wrapper-head {
+        padding: 0 3rem;
+    }
+
+    header {
+        max-width: 70.8rem;
+        padding: 3rem 0;
+    }
+
+    .start-screen {
+        max-width: 70.8rem;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10rem;
+        padding-top: 3rem;
+    }
+
+    .start-screen-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: baseline;
+        max-width: 46rem;
+        row-gap: 4.2rem;
+        align-self: center;
+        padding-bottom: 0;
+    }
+
+    .start-screen-content .button-primary {
+        align-self: center;
+    }
+
+    .start-screen-img {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+
+    .start-screen-img img {
+        max-width: 569px;
+    }
+
+
+    .wrapper-about {
+        padding: 0 3rem;
+    }
+    
+    .about {
+        max-width: 70.8rem;
+        padding: 8rem 0 10rem 0;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        row-gap: 8rem;
+    }
+
+    .about-content {
+        max-width: 43.6rem;
+    }
+
+    .wrapper-pets {
+        padding: 0 3rem;
+    }
+
+    .pets {
+        max-width: 70.8rem;
+    }
+
+    .pets-cards {
+        column-gap: 4rem;
+    }
+
+    .pets-cards .pet3 {
+        display: none;
+    }
+
+    .wrapper-help {
+        padding: 0 3rem;
+    }
+
+    .help {
+        max-width: 70.8rem;
+    }
+
+    .help-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        justify-content: center;
+        grid-column-gap: 6rem;
+        grid-row-gap: 5.5rem;
+    }
+
+    .help-card {
+    width: 17rem;
+    }
+
+
+    .wrapper-donation {
+        padding: 0 3rem;
+    }
+    
+    .donation {
+        max-width: 70.8rem;
+        flex-direction: column-reverse;
+        padding: 8.1rem 0 10rem 0;
+        row-gap: 6rem;
+    }
+
+    .wrapper-footer {
+        padding: 0 3rem;
+    }
+    
+    footer {
+        max-width: 70.8rem;
+        padding-top: 3rem;
+        flex-direction: column;
+        justify-content: space-between;
+        row-gap: 6.5rem;
+    }
+
+    .footer-content {
+        column-gap: 6rem;
+        justify-content: center;
+    }
+
+    .footer-content-1 {
+        padding: 0;
+        max-width: 27.9rem;        
+        row-gap: 3.3rem;
+    }
+    
+    .footer-content-2 {
+        padding: 0;
+        max-width: 30.2rem;
+        row-gap: 3.3rem;
+    }
+
+    .footer-img {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
 }
