@@ -173,6 +173,14 @@ header {
     color: #FFFFFF;
 }
 
+.burger-icon {
+    display: none;
+}
+
+.burger-menu {
+    display: none;
+}
+
 .top-nav-list {
     display: flex;
     justify-content: space-between;
@@ -276,16 +284,12 @@ header {
     display: flex;
     flex-direction: column;
     max-width: 43rem;
+    row-gap: 2.5rem;
 }
 
 .about-content-title {
     color: #545454;
 }
-
-.about-content-paragraph {
-    margin-top: 2.5rem;
-}
-
 
 /*Pets block*/
 
@@ -657,5 +661,296 @@ footer {
         display: flex;
         align-items: flex-end;
         justify-content: center;
+    }
+}
+
+
+@media (max-width: 767px) {
+    h2 {
+        font-size: 2.5rem;
+        letter-spacing: 0.06em;
+    }
+
+    h3 {
+        font-size: 2.5rem;
+    }
+
+    .wrapper-head {
+        padding: 0 1rem;
+    }
+
+    header {
+        max-width: 30rem;
+        padding: 3rem 0;
+    }
+
+    .burger-icon {
+        display: block;
+    }
+
+    .burger-menu {
+        display: none;
+    }
+
+    .top-nav {
+        display: none;
+    }
+
+    .start-screen {
+        max-width: 30rem;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10.6rem;
+        padding-top: 3rem;
+    }
+
+    .start-screen-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 100%;
+        row-gap: 4.2rem;
+        align-self: center;
+        padding-bottom: 0;
+    }
+
+    .start-screen-content-title {
+        text-align: center;
+    }
+    
+    .start-screen-content-paragraph {
+        text-align: center;
+    }
+
+    .start-screen-content .button-primary {
+        align-self: center;
+    }
+
+    .start-screen-img {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+
+    .start-screen-img img {
+        max-width: 260px;
+    }
+
+
+    .wrapper-about {
+        padding: 0 1rem;
+    }
+    
+    .about {
+        max-width: 30rem;
+        padding: 4.2rem 0;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        row-gap: 4.2rem;
+    }
+
+    .about-content {
+        max-width: 100%;
+        row-gap: 2.3rem;
+    }
+
+    .about-content-title {
+        text-align: center;
+    }
+
+    .about-content-paragraph {
+        text-align: justify;
+        margin: 0 1.5rem;
+    }
+
+    .about-img img {
+        max-width: 260px;
+    }
+
+
+    .wrapper-pets {
+        padding: 0 1rem;
+    }
+
+    .pets {
+        max-width: 30rem;
+        padding: 4.2rem 0;
+        row-gap: 4.2rem;
+    }
+
+    .pets-slider {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 27rem;
+        flex-wrap: wrap;
+        column-gap: 8rem;
+        row-gap: 2rem;
+    }
+
+    .pets-cards {
+        column-gap: 4rem;
+        order: 1;
+    }
+    
+    .pets-slider .arrow-left {
+        order: 2;
+    }
+
+    .pets-slider .arrow-right {
+        order: 3;
+    }
+
+    .pets-cards .pet2, .pet3 {
+        display: none;
+    }
+
+    .wrapper-help {
+        padding: 0 1rem;
+    }
+
+    .help {
+        max-width: 30rem;
+        padding: 4.2rem 0;
+        row-gap: 4.2rem;
+    }
+
+    .help-title {
+        max-width: 23rem;;
+    }
+
+    .help-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+        grid-column-gap: 3rem;
+        grid-row-gap: 3rem;
+        align-self: center;
+    }
+
+    .help-card {
+        width: 13rem;
+        row-gap: 2rem;
+    }
+
+    .help-card-title {
+        font-size: 1.5rem;
+    }
+
+    .help-card img {
+        width: 50px;
+    }
+
+
+
+
+    .wrapper-donation {
+        padding: 0 1rem;
+    }
+    
+    .donation {
+        max-width: 30rem;
+        flex-direction: column-reverse;
+        padding: 4.2rem 0;
+        row-gap: 4.3rem;
+        align-items: center;
+    }
+
+    .donation-content {
+        max-width: 28rem;
+        justify-content: center;
+    }
+
+    .donation-content h5 {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.5rem;
+        line-height: 160%;
+        letter-spacing: 0.005em;
+        color: #545454;
+    }
+
+    .donation-title {
+        max-width: 28rem;
+        text-align: center;
+    }
+
+    .credit-card {
+        display: flex;
+        width: 28.1rem;
+        height: 4.3rem;
+        column-gap: 1.5rem;
+        align-self: flex-start;
+        align-items: center;
+        justify-content: center;
+        background: #F1CDB3;
+        border-radius: 0.9rem;
+    }
+
+    .credit-card-number {
+        font-size: 1.5rem;
+    }
+
+    .donation-description {
+        text-align: justify;
+    }
+
+    .donation-img img {
+        max-width: 260px;
+    }
+
+    .wrapper-footer {
+        padding: 0 1rem;
+    }
+    
+    footer {
+        max-width: 30rem;
+        padding-top: 3rem;
+        flex-direction: column;
+        justify-content: space-between;
+        row-gap: 9.2rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        row-gap: 4rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer-content-1 {
+        padding: 0;
+        max-width: 27.9rem;        
+        row-gap: 4rem;
+    }
+
+    .footer-content-1 h3 {
+        text-align: center;
+        align-self: center;
+        font-size: 3.5rem;
+    }
+    
+    .footer-content-2 {
+        padding: 0;
+        max-width: 30.2rem;
+        row-gap: 3.3rem;
+    }
+
+    .footer-content-2 h3 {
+        text-align: center;
+        align-self: center;
+        font-size: 3.5rem;
+    }
+
+    .footer-img {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .footer-img img {
+        max-width: 260px;
     }
 }
