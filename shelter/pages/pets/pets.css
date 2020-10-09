@@ -441,7 +441,7 @@ footer {
     }
 
     .pets-cards {
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr 1fr;
         column-gap: 4rem;
     }   
