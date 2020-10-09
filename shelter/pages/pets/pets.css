@@ -320,8 +320,8 @@ header {
 .pets-cards {
     padding: 1.5rem 0;
     display: grid;
-    grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     column-gap: 4rem;
     row-gap: 3rem;
 }
@@ -441,8 +441,8 @@ footer {
     }
 
     .pets-cards {
+        grid-template-columns: 1fr 2fr;
         grid-template-rows: 1fr 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
         column-gap: 4rem;
     }   
     
@@ -526,8 +526,8 @@ footer {
     }
 
     .pets-cards {
-        grid-template-rows: 1fr 1fr 1fr;
         grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
     }
     
     
