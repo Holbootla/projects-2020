@@ -238,6 +238,14 @@ header {
     color: #292929;
 }
 
+.burger-icon {
+    display: none;
+}
+
+.burger-menu {
+    display: none;
+}
+
 .top-nav-list {
     display: flex;
     justify-content: space-between;
