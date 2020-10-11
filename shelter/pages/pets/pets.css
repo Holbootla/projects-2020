@@ -433,18 +433,23 @@ footer {
     }
 
     .pets {
+        padding: 8rem 0 7.6rem 0;
         max-width: 70.8rem;
+        row-gap: 1.5rem;
     }
 
     .pets-slider {
-        row-gap: 4rem;
+        row-gap: 2.5rem;
     }
 
     .pets-cards {
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
         column-gap: 4rem;
-    }   
+    }
+
+    .pets-cards > :nth-last-child(-n+2) {
+        display: none;
+    }
     
     footer {
         max-width: 70.8rem;
@@ -500,6 +505,7 @@ footer {
 
     .burger-icon {
         display: block;
+        margin: 0 4.3rem 0 0;
     }
 
     .burger-menu {
@@ -522,15 +528,24 @@ footer {
     }
 
     .pets-slider {
-        row-gap: 4rem;
+        row-gap: 4.2rem;
     }
 
     .pets-cards {
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr;
+        padding: 0px;
     }
-    
-    
+
+    .pets-cards > :nth-last-child(-n+5) {
+        display: none;
+    }
+
+    .slider-buttons {
+        display: flex;
+        column-gap: 1rem;
+    }
+        
+
     .wrapper-footer {
         padding: 0 1rem;
     }
@@ -540,7 +555,7 @@ footer {
         padding-top: 3rem;
         flex-direction: column;
         justify-content: space-between;
-        row-gap: 9.2rem;
+        row-gap: 4rem;
     }
 
     .footer-content {
@@ -554,24 +569,27 @@ footer {
         padding: 0;
         max-width: 27.9rem;        
         row-gap: 4rem;
+        align-items: center;
     }
 
     .footer-content-1 h3 {
         text-align: center;
         align-self: center;
-        font-size: 3.5rem;
+        font-size: 2.5rem;
+        max-width: 24rem;
     }
     
     .footer-content-2 {
         padding: 0;
         max-width: 30.2rem;
-        row-gap: 3.3rem;
+        row-gap: 4rem;
     }
 
     .footer-content-2 h3 {
         text-align: center;
         align-self: center;
-        font-size: 3.5rem;
+        font-size: 2.5rem;
+        max-width: 24rem;
     }
 
     .footer-img {
