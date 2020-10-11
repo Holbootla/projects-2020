@@ -582,7 +582,7 @@ footer {
     }
 
     .about-content {
-        max-width: 43.6rem;
+        max-width: 43rem;
     }
 
     .wrapper-pets {
@@ -692,10 +692,7 @@ footer {
 
     .burger-icon {
         display: block;
-    }
-
-    .burger-menu {
-        display: none;
+        margin: 0 4.3rem 0 0;
     }
 
     .top-nav {
@@ -723,6 +720,7 @@ footer {
 
     .start-screen-content-title {
         text-align: center;
+        max-width: 20rem;
     }
     
     .start-screen-content-paragraph {
@@ -864,6 +862,7 @@ footer {
     .donation-content {
         max-width: 28rem;
         justify-content: center;
+        align-items: center;
     }
 
     .donation-content h5 {
@@ -875,7 +874,7 @@ footer {
     }
 
     .donation-title {
-        max-width: 28rem;
+        max-width: 21rem;
         text-align: center;
     }
 
@@ -912,7 +911,7 @@ footer {
         padding-top: 3rem;
         flex-direction: column;
         justify-content: space-between;
-        row-gap: 9.2rem;
+        row-gap: 4rem;
     }
 
     .footer-content {
@@ -926,24 +925,27 @@ footer {
         padding: 0;
         max-width: 27.9rem;        
         row-gap: 4rem;
+        align-items: center;
     }
 
     .footer-content-1 h3 {
         text-align: center;
         align-self: center;
-        font-size: 3.5rem;
+        font-size: 2.5rem;
+        max-width: 24rem;
     }
     
     .footer-content-2 {
         padding: 0;
         max-width: 30.2rem;
-        row-gap: 3.3rem;
+        row-gap: 4rem;
     }
 
     .footer-content-2 h3 {
         text-align: center;
         align-self: center;
-        font-size: 3.5rem;
+        font-size: 2.5rem;
+        max-width: 24rem;
     }
 
     .footer-img {
