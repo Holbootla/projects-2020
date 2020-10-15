@@ -2,15 +2,14 @@ const numbers = document.querySelectorAll('[data-number]');
 const decimal = document.querySelector('[data-decimal]');
 const operations = document.querySelectorAll('[data-operation');
 const allClear = document.querySelector('[data-all-clear]');
-const del = document.querySelector('[data-delete]');
 const result = document.querySelector('[data-equals]');
-
+const minusBtn = document.querySelector('[data-minus]');
 let display = document.getElementById('display');
 let currentNumber = 0;
 let newNumber = false;
 let pendingOperation = '';
 
-const numberPress = (symbol) => {
+function numberPress(symbol) {
     if (newNumber) {
         display.value = symbol;
         newNumber = false;
@@ -21,9 +20,9 @@ const numberPress = (symbol) => {
             display.value += symbol;
         }
     }
-};
+}
 
-const operationPress = (op) => {
+function operationPress(op) {
     let localOperationMemory = display.value;
 
     if (newNumber === true && pendingOperation != '=') {
@@ -31,13 +30,13 @@ const operationPress = (op) => {
     } else {
         newNumber = true;
         if (pendingOperation === '+') {
-            currentNumber += parseFloat(localOperationMemory);
+            currentNumber = currentNumber + parseFloat(localOperationMemory);
         } else if (pendingOperation === '-') {
-            currentNumber -= parseFloat(localOperationMemory);
+            currentNumber = currentNumber - parseFloat(localOperationMemory);
         } else if (pendingOperation === '*') {
-            currentNumber *= parseFloat(localOperationMemory);
+            currentNumber = currentNumber * parseFloat(localOperationMemory);
         } else if (pendingOperation === '/') {
-            currentNumber /= parseFloat(localOperationMemory);
+            currentNumber = currentNumber / parseFloat(localOperationMemory);
         } else if (pendingOperation === '^') {
             currentNumber = Math.pow(currentNumber, parseFloat(localOperationMemory));
         } else if (pendingOperation === '√') {
@@ -45,17 +44,17 @@ const operationPress = (op) => {
         } else {
             currentNumber = parseFloat(localOperationMemory);
         }
-        display.value = currentNumber;
+        display.value = Math.round(currentNumber * 100000000) / 100000000;
         pendingOperation = op;
     }
-};
+}
 
-const acPress = () => {
+function acPress() {
     display.value = '0';
     newNumber = true;
     currentNumber = 0;
     pendingOperation = '';
-};
+}
 
 for (let i = 0; i < numbers.length; i++) {
     let number = numbers[i];
@@ -73,7 +72,7 @@ for (let i = 0; i < operations.length; i++) {
 }
 
 
-const decimalPress = () => {
+function decimalPress() {
     let localDecimalMemory = display.value;
     if (newNumber) {
         localDecimalMemory = '0.';
@@ -84,12 +83,27 @@ const decimalPress = () => {
         }
     }
     display.value = localDecimalMemory;
-};
+}
+
+function minusPress() {
+    let localMinusMemory = display.value;
+  
+    if (newNumber) {
+      localMinusMemory = '-';
+      newNumber = false;
+    } else {
+      if (localMinusMemory.indexOf('-') === -1) {
+        localMinusMemory = '-' + localMinusMemory;
+      }
+    }
+    display.value = localMinusMemory;
+  };
 
 allClear.addEventListener('click', acPress);
 
 decimal.addEventListener('click', decimalPress);
 
+minusBtn.addEventListener('click', minusPress);
 
 
 
