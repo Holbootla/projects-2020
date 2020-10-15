@@ -6,6 +6,7 @@
 
 body {
   display: flex;
+  flex-direction: column-reverse;
   align-items: center;
   padding: 0;
   margin: 0;
@@ -13,9 +14,10 @@ body {
 }
 
 .notes {
-  max-width: 30vw;
-  margin-right: 2vw;
+  max-width: 380px;
+  margin-top: 1vw;
   color: white;
+  line-height: 150%;
 }
 
 li {
@@ -23,10 +25,10 @@ li {
 }
 
 .calculator-grid {
+  padding-top: 20px;
   display: grid;
   justify-content: center;
   align-content: center;
-  min-height: 100vh;
   grid-template-columns: repeat(4, 100px);
   grid-template-rows: minmax(120px, auto) repeat(5, 100px);
 }
