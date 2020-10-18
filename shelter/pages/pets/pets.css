@@ -11,6 +11,10 @@
     font-size: 10px;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 a {
     text-decoration: none;
 }
@@ -193,28 +197,42 @@ h4 {
     letter-spacing: 0.06em;
 }
 
-/*Header block*/
-
-.wrapper-header {
-    position: sticky;
+.dark-back {
+    display: none;
+    position: fixed;
+    left: 0;
     top: 0;
-    background: #ffffff;
-    padding: 0 4rem;
+    width: 100%;
+    height: 100%;
 }
 
-header {
-    max-width: 120rem;
-    padding: 3rem 0;
+.wrapper {
+    position: relative;
+}
+
+/*Header block*/
+
+.header {
+    padding: 3rem 4rem;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    background: #ffffff;
+    z-index: 9500;
 }
 
 .logo {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center;    
+    transition: 0.5s;
+}
+
+.burger-logo {
+    display: none;
 }
 
 .logo-title {
@@ -284,7 +302,6 @@ header {
     color: #292929;
     cursor: pointer;
 }
-
 
 /*Pets block*/
 
@@ -419,13 +436,9 @@ footer {
 
 
 @media (max-width: 1279px) {
-    .wrapper-header {
-        padding: 0 3rem;
-    }
 
-    header {
-        max-width: 70.8rem;
-        padding: 3rem 0;
+    .header {
+        padding: 3rem 3rem;
     }
 
     .wrapper-pets {
@@ -494,28 +507,84 @@ footer {
         font-size: 2.5rem;
     }
 
-    .wrapper-header {
-        padding: 0 1rem;
+    .blackout {
+        display: block;
+        background: rgba(41, 41, 41, 0.6);
+        z-index: 9000;
     }
 
-    header {
-        max-width: 30rem;
-        padding: 3rem 0;
+    .logo-translate {
+        transition: 0.5s;
+        transform: translateX(-450px);
+    }
+
+    .header {
+        padding: 3rem 1rem;
+    }
+
+    .burger-logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 3rem 0 0 1rem;
+        align-self: flex-start;
     }
 
     .burger-icon {
         display: block;
         margin: 0 4.3rem 0 0;
+        z-index: 9999;
+        transition: 0.5s;
     }
 
-    .burger-menu {
-        display: none;
+    .burger-img:hover {
+        cursor: pointer;
     }
 
-    .top-nav {
-        display: none;
+    .burger-icon-rotated {
+        transform: rotate(450deg);
+        transition: 0.5s;
     }
 
+    .top-nav {       
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        height: 100vh;
+        width: 32rem;
+        top: 0;
+        right: -32rem;
+        background: #ffffff;
+        transition: 0.5s;
+        z-index: 9999;
+    }
+
+    .top-nav-translate {
+        transition: 0.5s;
+        right: 0;
+    }
+
+    .top-nav-list {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        row-gap: 4rem;
+        height: 100%;
+    }
+
+    .top-nav-list-item-link-active {
+        font-size: 3.2rem;        
+    }
+    
+    .top-nav-list-item-link {
+        font-size: 3.2rem;
+    }
+
+    .top-nav-list-item-link:hover {
+        font-size: 3.2rem;        
+    }
     
     .wrapper-pets {
         padding: 0 1rem;

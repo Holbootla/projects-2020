@@ -130,6 +130,15 @@ h5 {
     cursor: pointer;
 }
 
+.dark-back {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
 /*Head block*/
 
 .wrapper-head {
@@ -150,6 +159,11 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: 0.5s;
+}
+
+.burger-logo {
+    display: none;
 }
 
 .logo-title {
@@ -174,10 +188,6 @@ header {
 }
 
 .burger-icon {
-    display: none;
-}
-
-.burger-menu {
     display: none;
 }
 
@@ -683,20 +693,87 @@ footer {
 
     .wrapper-head {
         padding: 0 1rem;
+        overflow: hidden;
+        position: relative;
     }
 
+    .blackout {
+        display: block;
+        background: rgba(41, 41, 41, 0.6);
+        z-index: 9970;
+    }
+
+    .logo-translate {
+        transition: 0.5s;
+        transform: translateX(-450px);
+    }
+    
     header {
-        max-width: 30rem;
         padding: 3rem 0;
+    }
+
+    .burger-logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 3rem 0 0 1rem;
+        align-self: flex-start;
     }
 
     .burger-icon {
         display: block;
         margin: 0 4.3rem 0 0;
+        z-index: 9999;
+        transition: 0.5s;
+    }
+
+    .burger-img:hover {
+        cursor: pointer;
+    }
+
+    .burger-icon-rotated {
+        transform: rotate(450deg);
+        transition: 0.5s;
     }
 
     .top-nav {
-        display: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        height: 100%;
+        width: 32rem;
+        top: 0;
+        right: -32rem;
+        background: #292929;
+        transition: 0.5s;
+        z-index: 9990;
+    }
+
+    .top-nav-translate {
+        transition: 0.5s;
+        right: 0;
+    }
+
+    .top-nav-list {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        row-gap: 4rem;
+        height: 100%;
+    }
+
+    .top-nav-list-item-link-active {
+        font-size: 3.2rem;        
+    }
+    
+    .top-nav-list-item-link {
+        font-size: 3.2rem;
+    }
+
+    .top-nav-list-item-link:hover {
+        font-size: 3.2rem;        
     }
 
     .start-screen {
