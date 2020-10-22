@@ -1,0 +1,268 @@
+const datefull = document.querySelector('.datefull');
+const time = document.querySelector('.time');
+const greeting = document.querySelector('.greeting');
+const name = document.querySelector('.name');
+const focus = document.querySelector('.focus');
+
+const imagePath = '';
+const imageArrayMorning = [
+
+];
+
+function showTime () {
+    let today = new Date();
+    let day = today.getDay();
+    let date = today.getDate();
+    let month = today.getMonth();
+
+    switch (day) {
+        case 0:
+            day = 'Sunday';
+            break;
+        case 1:
+            day = 'Monday';
+            break;
+        case 2:
+            day = 'Tuesday';
+            break;
+        case 3:
+            day = 'Wednesday';
+            break;
+        case 4:
+            day = 'Thursday';
+            break;
+        case 5:
+            day = 'Friday';
+            break;
+        case 6:
+            day = 'Saturday';
+            break;   
+        default:
+            break;
+    }
+
+    switch (month) {
+        case 0:
+            month = 'January';
+            break;
+        case 1:
+            month = 'February';
+            break;
+        case 2:
+            month = 'March';
+            break;
+        case 3:
+            month = 'April';
+            break;
+        case 4:
+            month = 'May';
+            break;
+        case 5:
+            month = 'June';
+            break;
+        case 6:
+            month = 'July';
+            break;  
+        case 7:
+            month = 'August';
+            break; 
+        case 8:
+            month = 'September';
+            break; 
+        case 9:
+            month = 'October';
+            break; 
+        case 10:
+            month = 'November';
+            break;  
+        case 11:
+            month = 'December';
+            break; 
+        default:
+            break;  
+    }
+
+    datefull.innerHTML = `Today is ${day}, ${month} ${date}`;
+    time.innerHTML = today.toLocaleTimeString();
+
+    setTimeout(showTime, 1000);
+}
+
+function setBackground () {
+    let today = new Date();
+    let hours = today.getHours();
+
+    if (hours < 6) {
+        document.body.style.backgroundImage = 'url("assets/images/night/01.jpg")';
+        greeting.textContent = 'Good Night';
+    } else if (hours < 12) {
+        document.body.style.backgroundImage = 'url("assets/images/night/01.jpg")';
+        greeting.textContent = 'Good Morning';
+    } else if (hours < 18) {
+        document.body.style.backgroundImage = 'url("assets/images/night/01.jpg")';
+        greeting.textContent = 'Good Afternoon';
+    } else if (hours < 24) {
+        document.body.style.backgroundImage = 'url("assets/images/day/11.jpg")';
+        greeting.textContent = 'Good Evening';
+    }
+}
+
+function getName() {
+    if (localStorage.getItem('name') === null) {
+        name.textContent = '[Enter Name]';
+    } else {
+        name.textContent = localStorage.getItem('name');
+    }
+}
+
+let tempName = '';
+
+
+function clearName () {
+    tempName = name.textContent;
+    name.textContent = '';
+    localStorage.setItem('name', null);
+}
+
+function setName (e) {
+    if (e.type === 'keypress') {
+        if (e.which == 13 || e.keyCode == 13) {
+            localStorage.setItem('name', e.target.innerText);
+            name.blur();
+        }
+    } else {
+        localStorage.setItem('name', e.target.innerText);
+    }
+    
+    if (localStorage.getItem('name') === '') {
+        name.textContent = tempName;
+        localStorage.setItem('name', tempName);
+    }
+}
+
+function getFocus() {
+    if (localStorage.getItem('focus') === null) {
+        focus.textContent = '[Enter Focus]';
+    } else {
+        focus.textContent = localStorage.getItem('focus');
+    }
+}
+
+let tempFocus = '';
+
+function clearFocus () {
+    tempFocus = focus.textContent;
+    focus.textContent = '';
+    localStorage.setItem('focus', null);
+}
+
+function setFocus (e) {
+    if (e.type === 'keypress') {
+        if (e.which == 13 || e.keyCode == 13) {
+            localStorage.setItem('focus', e.target.innerText);
+            focus.blur();
+        }
+    } else {
+        localStorage.setItem('focus', e.target.innerText);
+    }
+    
+    if (localStorage.getItem('focus') === '') {
+        localStorage.setItem('focus', tempFocus);
+        focus.textContent = tempFocus;
+    }
+}
+
+showTime();
+setBackground(); 
+getName();
+getFocus();
+
+name.addEventListener('keypress', setName);
+name.addEventListener('blur', setName);
+name.addEventListener('click', clearName);
+focus.addEventListener('keypress', setFocus);
+focus.addEventListener('blur', setFocus);
+focus.addEventListener('click', clearFocus);
+
+
+/* Quotes:
+const blockquote = document.querySelector('blockquote');
+const figcaption = document.querySelector('figcaption');
+const btn = document.querySelector('.btn');
+
+async function getQuote() {  
+    const url = `https://type.fit/api/quotes`;
+    const res = await fetch(url);
+    const data = await res.json();
+    blockquote.textContent = data.text;
+    figcaption.textContent = data.author;
+    }
+document.addEventListener('DOMContentLoaded', getQuote);
+btn.addEventListener('click', getQuote);
+*/
+
+
+// weather
+const weatherIcon = document.querySelector('.weather-icon');
+const temperature = document.querySelector('.temperature');
+const weatherDescription = document.querySelector('.weather-description');
+const city = document.querySelector('.city');
+
+async function getWeather() {  
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=en&appid=660afb2acdc97991630ac8d197009df2&units=metric`;
+    const res = await fetch(url);
+    const data = await res.json();
+   
+    weatherIcon.className = 'weather-icon owf';
+    weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+    temperature.textContent = `${data.main.temp}°C`;
+    weatherDescription.textContent = data.weather[0].description;
+
+}
+
+function getCity() {
+    if (localStorage.getItem('city') === null) {
+        city.textContent = 'Minsk';
+    } else {
+        city.textContent = localStorage.getItem('city');
+    }
+}
+
+function clearCity () {
+    tempCity = city.textContent;
+    city.textContent = '';
+    localStorage.setItem('city', null);
+}
+
+
+function setCity (e) {
+    if (e.type === 'keypress') {
+        if (e.which == 13 || e.keyCode == 13) {
+            localStorage.setItem('city', e.target.innerText);
+            city.blur();
+        }
+    } else {
+        localStorage.setItem('city', e.target.innerText);
+    }
+    
+    if (localStorage.getItem('city') === '') {
+        city.textContent = tempCity;
+        localStorage.setItem('city', tempCity);
+    }
+    getWeather();
+}
+/*
+function setCity(event) {
+    if (event.code === 'Enter') {
+      getWeather();
+      city.blur();
+    }
+}
+*/
+getWeather();
+getCity();
+document.addEventListener('DOMContentLoaded', getWeather);
+city.addEventListener('keypress', setCity);
+city.addEventListener('click', clearCity);
+city.addEventListener('blur', setCity);
+
