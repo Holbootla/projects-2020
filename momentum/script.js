@@ -99,7 +99,7 @@ function changeBG () {
         pseudoHours = 1;
     }    
     btnChangeBG.disabled = true;
-    setTimeout(function() {btnChangeBG.disabled = false}, 2000);
+    setTimeout(function() {btnChangeBG.disabled = false}, 1500);
 }
 
 function showTime () {
@@ -303,7 +303,7 @@ async function getWeather() {
    
     weatherIcon.className = 'weather-icon owf';
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
-    temperature.textContent = `${data.main.temp}°C`;
+    temperature.textContent = `${Math.round(data.main.temp)}°C`;
     weatherDescription.textContent = data.weather[0].description;
     windSpeed.textContent = `Wind speed: ${data.wind.speed}m/s`
 }
