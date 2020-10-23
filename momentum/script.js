@@ -3,20 +3,53 @@ const time = document.querySelector('.time');
 const greeting = document.querySelector('.greeting');
 const name = document.querySelector('.name');
 const focus = document.querySelector('.focus');
+const btnChangeBG = document.querySelector('.btn-change-bg');
 
 let imgRandomArray = [];
 
 function createImgRandomArray () {
+
+    let imagePath;
+
+    function getImgRandom () {
+        let imgName = Math.floor(Math.random() * 20) + 1;
+        if (imgName >= 10) {
+            imagePath = `${imgName}.jpg`;
+        } else {
+            imagePath = `0${imgName}.jpg`;
+        }
+    }
+
     const basePath = 'assets/images/';
     for (let i = 0; i < 24; i++) {
         if (i < 6) {
-            imgRandomArray[i] = basePath + 'night/' + getImgRandom(); 
+            getImgRandom();
+            if (!imgRandomArray.includes(basePath + 'night/' + imagePath)) {
+                imgRandomArray[i] = basePath + 'night/' + imagePath;
+            } else {
+                i--;
+            }             
         } else if (i < 12) {
-            imgRandomArray[i] = basePath + 'morning/' + getImgRandom(); 
+            getImgRandom();
+            if (!imgRandomArray.includes(basePath + 'morning/' + imagePath)) {
+                imgRandomArray[i] = basePath + 'morning/' + imagePath;
+            } else {
+                i--;
+            } 
         } else if (i < 18) {
-            imgRandomArray[i] = basePath + 'day/' + getImgRandom(); 
+            getImgRandom();
+            if (!imgRandomArray.includes(basePath + 'day/' + imagePath)) {
+                imgRandomArray[i] = basePath + 'day/' + imagePath;
+            } else {
+                i--;
+            } 
         } else if (i < 24) {
-            imgRandomArray[i] = basePath + 'evening/' + getImgRandom(); 
+            getImgRandom();
+            if (!imgRandomArray.includes(basePath + 'evening/' + imagePath)) {
+                imgRandomArray[i] = basePath + 'evening/' + imagePath;
+            } else {
+                i--;
+            } 
         } 
     }
 }
@@ -41,6 +74,32 @@ function setBackground () {
         img.onload = () => {document.body.style.backgroundImage = `url("${src}")`;}
         greeting.textContent = 'Good Evening';
     }
+}
+
+let pseudoHours = 1;
+
+function changeBG () {
+    let today = new Date();
+    let hours = today.getHours();
+    
+    if (hours + pseudoHours < 24) {
+        let src = imgRandomArray[hours + pseudoHours];
+        const img = document.createElement("img");
+        img.src = src;
+        img.onload = () => {document.body.style.backgroundImage = `url("${src}")`;}        
+    } else {
+        let src = imgRandomArray[pseudoHours];
+        const img = document.createElement("img");
+        img.src = src;
+        img.onload = () => {document.body.style.backgroundImage = `url("${src}")`;}        
+    }
+    pseudoHours += 1;
+
+    if (pseudoHours > 23) {
+        pseudoHours = 1;
+    }    
+    btnChangeBG.disabled = true;
+    setTimeout(function() {btnChangeBG.disabled = false}, 2000);
 }
 
 function showTime () {
@@ -128,15 +187,6 @@ function showTime () {
     setTimeout(showTime, 1000);
 }
 
-function getImgRandom () {
-    let imgName = Math.floor(Math.random() * 20) + 1;
-    if (imgName >= 10) {
-        return `${imgName}.jpg`;
-    } else {
-        return `0${imgName}.jpg`;
-    }
-}
-
 function getName() {
     if (localStorage.getItem('name') === null) {
         name.textContent = '[Enter Name]';
@@ -214,7 +264,7 @@ name.addEventListener('click', clearName);
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
 focus.addEventListener('click', clearFocus);
-
+btnChangeBG.addEventListener('click', changeBG);
 
 // Quotes
 const blockquote = document.querySelector('blockquote');
