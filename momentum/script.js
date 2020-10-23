@@ -4,14 +4,50 @@ const greeting = document.querySelector('.greeting');
 const name = document.querySelector('.name');
 const focus = document.querySelector('.focus');
 
-const imagePath = '';
-const imageArrayMorning = [
+let imgRandomArray = [];
 
-];
+function createImgRandomArray () {
+    const basePath = 'assets/images/';
+    for (let i = 0; i < 24; i++) {
+        if (i < 6) {
+            imgRandomArray[i] = basePath + 'night/' + getImgRandom(); 
+        } else if (i < 12) {
+            imgRandomArray[i] = basePath + 'morning/' + getImgRandom(); 
+        } else if (i < 18) {
+            imgRandomArray[i] = basePath + 'day/' + getImgRandom(); 
+        } else if (i < 24) {
+            imgRandomArray[i] = basePath + 'evening/' + getImgRandom(); 
+        } 
+    }
+}
+
+function setBackground () {
+    let today = new Date();
+    let hours = today.getHours();
+    let src = imgRandomArray[hours];
+    const img = document.createElement("img");
+    img.src = src;
+
+    if (hours < 6) {
+        img.onload = () => {document.body.style.backgroundImage = `url("${src}")`;}
+        greeting.textContent = 'Good Night';
+    } else if (hours < 12) {
+        img.onload = () => {document.body.style.backgroundImage = `url("${src}")`;}
+        greeting.textContent = 'Good Morning';
+    } else if (hours < 18) {
+        img.onload = () => {document.body.style.backgroundImage = `url("${src}")`;}
+        greeting.textContent = 'Good Afternoon';
+    } else if (hours < 24) {
+        img.onload = () => {document.body.style.backgroundImage = `url("${src}")`;}
+        greeting.textContent = 'Good Evening';
+    }
+}
 
 function showTime () {
     let today = new Date();
     let day = today.getDay();
+    let min = today.getMinutes();
+    let sec = today.getSeconds();
     let date = today.getDate();
     let month = today.getMonth();
 
@@ -85,25 +121,19 @@ function showTime () {
     datefull.innerHTML = `Today is ${day}, ${month} ${date}`;
     time.innerHTML = today.toLocaleTimeString();
 
+    if (min === 0 && sec === 0) {
+        setBackground();
+    }
+
     setTimeout(showTime, 1000);
 }
 
-function setBackground () {
-    let today = new Date();
-    let hours = today.getHours();
-
-    if (hours < 6) {
-        document.body.style.backgroundImage = 'url("assets/images/night/01.jpg")';
-        greeting.textContent = 'Good Night';
-    } else if (hours < 12) {
-        document.body.style.backgroundImage = 'url("assets/images/night/01.jpg")';
-        greeting.textContent = 'Good Morning';
-    } else if (hours < 18) {
-        document.body.style.backgroundImage = 'url("assets/images/night/01.jpg")';
-        greeting.textContent = 'Good Afternoon';
-    } else if (hours < 24) {
-        document.body.style.backgroundImage = 'url("assets/images/day/11.jpg")';
-        greeting.textContent = 'Good Evening';
+function getImgRandom () {
+    let imgName = Math.floor(Math.random() * 20) + 1;
+    if (imgName >= 10) {
+        return `${imgName}.jpg`;
+    } else {
+        return `0${imgName}.jpg`;
     }
 }
 
@@ -172,6 +202,7 @@ function setFocus (e) {
     }
 }
 
+createImgRandomArray();
 showTime();
 setBackground(); 
 getName();
@@ -185,28 +216,35 @@ focus.addEventListener('blur', setFocus);
 focus.addEventListener('click', clearFocus);
 
 
-/* Quotes:
+// Quotes
 const blockquote = document.querySelector('blockquote');
-const figcaption = document.querySelector('figcaption');
-const btn = document.querySelector('.btn');
+const quoteBtn = document.querySelector('.quote-btn');
 
 async function getQuote() {  
-    const url = `https://type.fit/api/quotes`;
+    const url = `https://quote-garden.herokuapp.com/api/v2/quotes/random`;
     const res = await fetch(url);
     const data = await res.json();
-    blockquote.textContent = data.text;
-    figcaption.textContent = data.author;
+    blockquote.textContent = data.quote.quoteText;
     }
+
 document.addEventListener('DOMContentLoaded', getQuote);
-btn.addEventListener('click', getQuote);
-*/
+quoteBtn.addEventListener('click', getQuote);
 
 
 // weather
 const weatherIcon = document.querySelector('.weather-icon');
 const temperature = document.querySelector('.temperature');
 const weatherDescription = document.querySelector('.weather-description');
+const windSpeed = document.querySelector('.wind-speed');
 const city = document.querySelector('.city');
+
+function getCity() {
+    if (localStorage.getItem('city') === null) {
+        city.textContent = 'Minsk';
+    } else {
+        city.textContent = localStorage.getItem('city');
+    }
+}
 
 async function getWeather() {  
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=en&appid=660afb2acdc97991630ac8d197009df2&units=metric`;
@@ -217,15 +255,7 @@ async function getWeather() {
     weatherIcon.classList.add(`owf-${data.weather[0].id}`);
     temperature.textContent = `${data.main.temp}°C`;
     weatherDescription.textContent = data.weather[0].description;
-
-}
-
-function getCity() {
-    if (localStorage.getItem('city') === null) {
-        city.textContent = 'Minsk';
-    } else {
-        city.textContent = localStorage.getItem('city');
-    }
+    windSpeed.textContent = `Wind speed: ${data.wind.speed}m/s`
 }
 
 function clearCity () {
@@ -233,7 +263,6 @@ function clearCity () {
     city.textContent = '';
     localStorage.setItem('city', null);
 }
-
 
 function setCity (e) {
     if (e.type === 'keypress') {
@@ -251,15 +280,7 @@ function setCity (e) {
     }
     getWeather();
 }
-/*
-function setCity(event) {
-    if (event.code === 'Enter') {
-      getWeather();
-      city.blur();
-    }
-}
-*/
-getWeather();
+
 getCity();
 document.addEventListener('DOMContentLoaded', getWeather);
 city.addEventListener('keypress', setCity);
