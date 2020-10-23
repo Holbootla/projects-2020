@@ -3,6 +3,7 @@ const time = document.querySelector('.time');
 const greeting = document.querySelector('.greeting');
 const name = document.querySelector('.name');
 const focus = document.querySelector('.focus');
+const btnChangeBG = document.querySelector('.btn-change-bg');
 
 let imgRandomArray = [];
 
@@ -41,6 +42,30 @@ function setBackground () {
         img.onload = () => {document.body.style.backgroundImage = `url("${src}")`;}
         greeting.textContent = 'Good Evening';
     }
+}
+
+let pseudoHours = 1;
+
+function changeBG () {
+    let today = new Date();
+    let hours = today.getHours();
+    
+    if (hours + pseudoHours < 24) {
+        let src = imgRandomArray[hours + pseudoHours];
+        const img = document.createElement("img");
+        img.src = src;
+        img.onload = () => {document.body.style.backgroundImage = `url("${src}")`;}        
+    } else {
+        let src = imgRandomArray[pseudoHours];
+        const img = document.createElement("img");
+        img.src = src;
+        img.onload = () => {document.body.style.backgroundImage = `url("${src}")`;}        
+    }
+    pseudoHours += 1;
+
+    if (pseudoHours > 23) {
+        pseudoHours = 1;
+    }    
 }
 
 function showTime () {
@@ -214,7 +239,7 @@ name.addEventListener('click', clearName);
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
 focus.addEventListener('click', clearFocus);
-
+btnChangeBG.addEventListener('click', changeBG);
 
 // Quotes
 const blockquote = document.querySelector('blockquote');
