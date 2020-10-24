@@ -4,9 +4,11 @@ const burgerMenu = document.querySelector('.top-nav');
 const burgerIcon = document.querySelector('.burger-icon');
 const logo = document.querySelector('.logo');
 const darkBack = document.querySelector('.dark-back');
+const activeLink = document.querySelector('.top-nav-list-item-link-active');
 
 burgerIcon.addEventListener('click', showBurgerMenu);
 darkBack.addEventListener('click', closeBurgerMenu);
+activeLink.addEventListener('click', closeBurgerMenu);
 
 function showBurgerMenu() {
     burgerMenu.classList.toggle('top-nav-translate');

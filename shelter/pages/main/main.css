@@ -224,7 +224,7 @@ header {
     color: #CDCDCD;
 }
 
-.top-nav-list-item-link:hover {
+.available:hover {
     font-family: Arial;
     font-style: normal;
     font-weight: normal;
@@ -776,7 +776,7 @@ footer {
         font-size: 3.2rem;
     }
 
-    .top-nav-list-item-link:hover {
+    .available:hover {
         font-size: 3.2rem;        
     }
 
