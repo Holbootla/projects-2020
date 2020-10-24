@@ -301,11 +301,18 @@ async function getWeather() {
     const res = await fetch(url);
     const data = await res.json();
    
-    weatherIcon.className = 'weather-icon owf';
-    weatherIcon.classList.add(`owf-${data.weather[0].id}`);
-    temperature.textContent = `${Math.round(data.main.temp)}°C`;
-    weatherDescription.textContent = data.weather[0].description;
-    windSpeed.textContent = `Wind speed: ${data.wind.speed}m/s`
+    try {
+        weatherIcon.className = 'weather-icon owf';
+        weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+        temperature.textContent = `${Math.round(data.main.temp)}°C`;
+        weatherDescription.textContent = data.weather[0].description;
+        windSpeed.textContent = `Wind speed: ${data.wind.speed}m/s`;
+    } catch (error) {
+        temperature.textContent = 'City not found';
+        windSpeed.textContent = 'No hope, no future';
+        weatherDescription.textContent = 'No wind';
+    }
+    
 }
 
 function clearCity () {
