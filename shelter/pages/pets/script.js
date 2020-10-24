@@ -4,7 +4,7 @@ const burgerMenu = document.querySelector('.top-nav');
 const burgerIcon = document.querySelector('.burger-icon');
 const logo = document.querySelector('.logo');
 const darkBack = document.querySelector('.dark-back');
-const header = document.querySelector('.header')
+const header = document.querySelector('.header');
 
 burgerIcon.addEventListener('click', showBurgerMenu);
 darkBack.addEventListener('click', closeBurgerMenu);
@@ -15,6 +15,7 @@ function showBurgerMenu() {
     burgerIcon.classList.toggle('burger-icon-rotated');
     darkBack.classList.toggle('blackout');
     document.body.classList.toggle('overflow-hidden');
+    header.classList.toggle('background-none');
 }
 
 function closeBurgerMenu() {
@@ -23,4 +24,5 @@ function closeBurgerMenu() {
     burgerIcon.classList.remove('burger-icon-rotated');
     darkBack.classList.remove('blackout');
     document.body.classList.remove('overflow-hidden');
+    header.classList.remove('background-none');
 }
