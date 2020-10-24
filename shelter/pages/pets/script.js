@@ -1,3 +1,5 @@
+//Hamburger menu
+
 const burgerMenu = document.querySelector('.top-nav');
 const burgerIcon = document.querySelector('.burger-icon');
 const logo = document.querySelector('.logo');
@@ -12,6 +14,7 @@ function showBurgerMenu() {
     logo.classList.toggle('logo-translate');
     burgerIcon.classList.toggle('burger-icon-rotated');
     darkBack.classList.toggle('blackout');
+    document.body.classList.toggle('overflow-hidden');
 }
 
 function closeBurgerMenu() {
@@ -19,4 +22,5 @@ function closeBurgerMenu() {
     logo.classList.remove('logo-translate');
     burgerIcon.classList.remove('burger-icon-rotated');
     darkBack.classList.remove('blackout');
+    document.body.classList.remove('overflow-hidden');
 }

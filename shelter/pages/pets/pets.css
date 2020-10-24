@@ -11,6 +11,10 @@
     font-size: 10px;
 }
 
+.overflow-hidden {
+    overflow: hidden;
+}
+
 a {
     text-decoration: none;
 }
@@ -517,6 +521,8 @@ footer {
 
     .header {
         padding: 3rem 1rem;
+        position: fixed;
+        width: 100%;
     }
 
     .burger-logo {
