@@ -539,6 +539,12 @@ footer {
 
 
 @media (max-width: 1279px) {
+
+    .wrapper {
+        position: relative;
+        overflow-x: hidden;
+    }
+
     .wrapper-head {
         padding: 0 3rem;
     }
@@ -698,7 +704,6 @@ footer {
     .wrapper-head {
         padding: 0 1rem;
         overflow: hidden;
-        position: relative;
     }
 
     .blackout {
@@ -744,8 +749,8 @@ footer {
         display: flex;
         flex-direction: column;
         align-items: center;
-        position: absolute;
-        height: 100%;
+        position: fixed;
+        height: 100vh;
         width: 32rem;
         top: 0;
         right: -32rem;
