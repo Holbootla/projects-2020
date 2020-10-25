@@ -54,6 +54,9 @@ function createImgRandomArray () {
     }
 }
 
+let pseudoHours = 1;
+let pseudoIndex = 0;
+
 function setBackground () {
     let today = new Date();
     let hours = today.getHours();
@@ -74,9 +77,10 @@ function setBackground () {
         img.onload = () => {document.body.style.backgroundImage = `url("${src}")`;}
         greeting.textContent = 'Good Evening';
     }
-}
 
-let pseudoHours = 1;
+    pseudoHours = 1;
+    pseudoIndex = 0;
+}
 
 function changeBG () {
     let today = new Date();
@@ -86,17 +90,18 @@ function changeBG () {
         let src = imgRandomArray[hours + pseudoHours];
         const img = document.createElement("img");
         img.src = src;
-        img.onload = () => {document.body.style.backgroundImage = `url("${src}")`;}        
+        img.onload = () => {document.body.style.backgroundImage = `url("${src}")`;}    
+        pseudoHours += 1;      
     } else {
-        let src = imgRandomArray[pseudoHours];
+        let src = imgRandomArray[pseudoIndex];
         const img = document.createElement("img");
         img.src = src;
-        img.onload = () => {document.body.style.backgroundImage = `url("${src}")`;}        
+        img.onload = () => {document.body.style.backgroundImage = `url("${src}")`;}  
+        pseudoIndex += 1;      
     }
-    pseudoHours += 1;
 
-    if (pseudoHours > 23) {
-        pseudoHours = 1;
+    if (pseudoIndex > 23) {
+        pseudoIndex = 1;
     }    
     btnChangeBG.disabled = true;
     setTimeout(function() {btnChangeBG.disabled = false}, 1500);
@@ -287,6 +292,7 @@ const temperature = document.querySelector('.temperature');
 const weatherDescription = document.querySelector('.weather-description');
 const windSpeed = document.querySelector('.wind-speed');
 const city = document.querySelector('.city');
+const humidity = document.querySelector('.humidity');
 
 function getCity() {
     if (localStorage.getItem('city') === null) {
@@ -306,10 +312,12 @@ async function getWeather() {
         weatherIcon.classList.add(`owf-${data.weather[0].id}`);
         temperature.textContent = `${Math.round(data.main.temp)}°C`;
         weatherDescription.textContent = data.weather[0].description;
+        humidity.textContent = `Humidity: ${data.main.humidity}%`;
         windSpeed.textContent = `Wind speed: ${data.wind.speed}m/s`;
     } catch (error) {
         temperature.textContent = 'City not found';
         windSpeed.textContent = 'No hope, no future';
+        humidity.textContent = '';
         weatherDescription.textContent = 'No wind';
     }
     
