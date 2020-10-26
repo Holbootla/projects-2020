@@ -15,6 +15,10 @@
     overflow: hidden;
 }
 
+button {
+    outline: none;
+}
+
 a {
     text-decoration: none;
 }
