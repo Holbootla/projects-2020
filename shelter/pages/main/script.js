@@ -69,7 +69,7 @@ function showPopup(el) {
         <div class="popup-dark-back"></div>
         <div class="popup">
             <div class="close-popup"><img src="../../assets/icons/icon-close.svg"></div>
-            <div><img class="popup-img" src="${el.img}"></div>
+            <div class="popup-img-wrapper"><img class="popup-img" src="${el.img}"></div>
             <div class="popup-content">
                 <h3 class="popup-title">${el.name}</h3>
                 <h4 class="popup-subtitle">${el.type} - ${el.breed}</h4>
