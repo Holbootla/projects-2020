@@ -48,7 +48,7 @@ const Keyboard = {
             'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p',
             'caps', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'enter',
             'done', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '?',
-            'space'
+            'shift', 'space', 'left', 'right'
         ];
 
         // Create HTML for an icon
@@ -59,7 +59,7 @@ const Keyboard = {
         keyLayout.forEach(key => {
             const keyElement = document.createElement('button');
             const insertLineBreak = ['backspace', 'p', 'enter', '?'].indexOf(key) !== -1;
-
+            document.querySelector('.use-keyboard-input').selectionStart = document.querySelector('.use-keyboard-input').selectionEnd = 0;
             // Add attributes/classes
             keyElement.setAttribute('type', 'button');
             keyElement.classList.add('keyboard__key');
@@ -72,9 +72,23 @@ const Keyboard = {
                     keyElement.addEventListener('click', () => {
                         this.properties.value = this.properties.value.substring(0, this.properties.value.length - 1);
                         this._triggerEvent('oninput');
+                        document.querySelector('.use-keyboard-input').focus();
                     });
                     
                     break;
+
+                case 'shift':
+                    keyElement.classList.add('keyboard__key--wide', 'keyboard__key--activatable');
+                    keyElement.innerHTML = createIconHTML('keyboard_arrow_up');
+                    
+                    keyElement.addEventListener('click', () => {
+                        this._toggleCapsLock();
+                        document.querySelector('.use-keyboard-input').focus();
+                        keyElement.classList.toggle('keyboard__key--active', this.properties.capsLock);
+                    });
+                    
+                    break;
+    
 
                 case 'caps':
                     keyElement.classList.add('keyboard__key--wide', 'keyboard__key--activatable');
@@ -82,6 +96,7 @@ const Keyboard = {
                     
                     keyElement.addEventListener('click', () => {
                         this._toggleCapsLock();
+                        document.querySelector('.use-keyboard-input').focus();
                         keyElement.classList.toggle('keyboard__key--active', this.properties.capsLock);
                     });
                     
@@ -94,6 +109,7 @@ const Keyboard = {
                     keyElement.addEventListener('click', () => {
                         this.properties.value += '\n';
                         this._triggerEvent('oninput');
+                        document.querySelector('.use-keyboard-input').focus();
                     });
                     
                     break;
@@ -105,9 +121,34 @@ const Keyboard = {
                     keyElement.addEventListener('click', () => {
                         this.properties.value += ' ';
                         this._triggerEvent('oninput');
+                        document.querySelector('.use-keyboard-input').focus();
                     });
                     
                     break;
+
+                case 'left':
+                keyElement.classList.add('keyboard__key--wide');
+                keyElement.innerHTML = createIconHTML('keyboard_arrow_left');
+                
+                keyElement.addEventListener('click', () => {
+                    document.querySelector('.use-keyboard-input').selectionStart = document.querySelector('.use-keyboard-input').selectionEnd -= 1;
+                    this._triggerEvent('oninput');
+                    document.querySelector('.use-keyboard-input').focus();
+                });
+                
+                break;
+
+                case 'right':
+                    keyElement.classList.add('keyboard__key--wide');
+                    keyElement.innerHTML = createIconHTML('keyboard_arrow_right');
+                    
+                    keyElement.addEventListener('click', () => {
+                        document.querySelector('.use-keyboard-input').selectionStart = document.querySelector('.use-keyboard-input').selectionEnd += 1;
+                        this._triggerEvent('oninput');
+                        document.querySelector('.use-keyboard-input').focus();
+                    });
+                    
+                break;
 
                 case 'done':
                     keyElement.classList.add('keyboard__key--wide', 'keyboard__key--dark');
@@ -126,6 +167,7 @@ const Keyboard = {
                     keyElement.addEventListener('click', () => {
                         this.properties.value += this.properties.capsLock ? key.toUpperCase() : key.toLowerCase();
                         this._triggerEvent('oninput');
+                        document.querySelector('.use-keyboard-input').focus();
                     });
                     
                     break;
