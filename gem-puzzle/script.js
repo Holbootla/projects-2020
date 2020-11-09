@@ -11,10 +11,10 @@ const Game = {
 
 
     isNearEmptyGem (element) {
-        return ((Math.abs(parseInt(element.style.top) -  parseInt(this.elements.emptyGem.style.top)) ===  125) &&
+        return ((Math.abs(parseInt(element.style.top) -  parseInt(this.elements.emptyGem.style.top)) ===  25) &&
                 (Math.abs(parseInt(element.style.left) - parseInt(this.elements.emptyGem.style.left)) === 0)) ||
                ((Math.abs(parseInt(element.style.top) -  parseInt(this.elements.emptyGem.style.top)) ===  0) &&
-                (Math.abs(parseInt(element.style.left) - parseInt(this.elements.emptyGem.style.left)) === 125));
+                (Math.abs(parseInt(element.style.left) - parseInt(this.elements.emptyGem.style.left)) === 25));
         
     },
     
@@ -41,68 +41,68 @@ const Game = {
             switch (element) {
                 case '0' :
                     this.elements.gem.classList.add(`gem-${element}`); 
-                    this.elements.gem.style.top = '375px';
-                    this.elements.gem.style.left = '375px';
+                    this.elements.gem.style.top = '75%';
+                    this.elements.gem.style.left = '75%';
                     break;
                 case '1' :
-                    this.elements.gem.style.top = '0px';
-                    this.elements.gem.style.left = '0px';
+                    this.elements.gem.style.top = '0%';
+                    this.elements.gem.style.left = '0%';
                     break;
                 case '2' :
-                    this.elements.gem.style.top = '0px';
-                    this.elements.gem.style.left = '125px';
+                    this.elements.gem.style.top = '0%';
+                    this.elements.gem.style.left = '25%';
                     break;
                 case '3' :
-                    this.elements.gem.style.top = '0px';
-                    this.elements.gem.style.left = '250px';
+                    this.elements.gem.style.top = '0%';
+                    this.elements.gem.style.left = '50%';
                     break;
                 case '4' :
-                    this.elements.gem.style.top = '0px';
-                    this.elements.gem.style.left = '375px';
+                    this.elements.gem.style.top = '0%';
+                    this.elements.gem.style.left = '75%';
                     break;
                 case '5' :
-                    this.elements.gem.style.top = '125px';
-                    this.elements.gem.style.left = '0px';
+                    this.elements.gem.style.top = '25%';
+                    this.elements.gem.style.left = '0%';
                     break;
                 case '6' :
-                    this.elements.gem.style.top = '125px';
-                    this.elements.gem.style.left = '125px';
+                    this.elements.gem.style.top = '25%';
+                    this.elements.gem.style.left = '25%';
                     break;
                 case '7' :
-                    this.elements.gem.style.top = '125px';
-                    this.elements.gem.style.left = '250px';
+                    this.elements.gem.style.top = '25%';
+                    this.elements.gem.style.left = '50%';
                     break;
                 case '8' :
-                    this.elements.gem.style.top = '125px';
-                    this.elements.gem.style.left = '375px';
+                    this.elements.gem.style.top = '25%';
+                    this.elements.gem.style.left = '75%';
                     break;
                 case '9' :
-                    this.elements.gem.style.top = '250px';
-                    this.elements.gem.style.left = '0px';
+                    this.elements.gem.style.top = '50%';
+                    this.elements.gem.style.left = '0%';
                     break;
                 case '10' :
-                    this.elements.gem.style.top = '250px';
-                    this.elements.gem.style.left = '125px';
+                    this.elements.gem.style.top = '50%';
+                    this.elements.gem.style.left = '25%';
                     break;
                 case '11' :
-                    this.elements.gem.style.top = '250px';
-                    this.elements.gem.style.left = '250px';
+                    this.elements.gem.style.top = '50%';
+                    this.elements.gem.style.left = '50%';
                     break;
                 case '12' :
-                    this.elements.gem.style.top = '250px';
-                    this.elements.gem.style.left = '375px';
+                    this.elements.gem.style.top = '50%';
+                    this.elements.gem.style.left = '75%';
                     break;
                 case '13' :
-                    this.elements.gem.style.top = '375px';
-                    this.elements.gem.style.left = '0px';
+                    this.elements.gem.style.top = '75%';
+                    this.elements.gem.style.left = '0%';
                     break;
                 case '14' :
-                    this.elements.gem.style.top = '375px';
-                    this.elements.gem.style.left = '125px';
+                    this.elements.gem.style.top = '75%';
+                    this.elements.gem.style.left = '25%';
                     break;
                 case '15' :
-                    this.elements.gem.style.top = '375px';
-                    this.elements.gem.style.left = '250px';
+                    this.elements.gem.style.top = '75%';
+                    this.elements.gem.style.left = '50%';
                     break;
                 default :
                     break;
@@ -132,11 +132,11 @@ const Game = {
             let tempTop = parseInt(nearestElements[randomGem].style.top);
             let tempLeft = parseInt(nearestElements[randomGem].style.left);
 
-            nearestElements[randomGem].style.top = `${parseInt(this.elements.emptyGem.style.top)}px`;
-            nearestElements[randomGem].style.left = `${parseInt(this.elements.emptyGem.style.left)}px`;
+            nearestElements[randomGem].style.top = `${parseInt(this.elements.emptyGem.style.top)}%`;
+            nearestElements[randomGem].style.left = `${parseInt(this.elements.emptyGem.style.left)}%`;
 
-            this.elements.emptyGem.style.top = `${tempTop}px`;
-            this.elements.emptyGem.style.left = `${tempLeft}px`;
+            this.elements.emptyGem.style.top = `${tempTop}%`;
+            this.elements.emptyGem.style.left = `${tempLeft}%`;
 
         }
 
@@ -154,12 +154,12 @@ const Game = {
                     let tempLeft = parseInt(element.style.left);
                     
                     element.style.transitionDuration = '0.5s';
-                    element.style.top = `${parseInt(this.elements.emptyGem.style.top)}px`;
-                    element.style.left = `${parseInt(this.elements.emptyGem.style.left)}px`;
+                    element.style.top = `${parseInt(this.elements.emptyGem.style.top)}%`;
+                    element.style.left = `${parseInt(this.elements.emptyGem.style.left)}%`;
                     setTimeout(() => {element.style.transitionDuration = null;}, 500);
 
-                    this.elements.emptyGem.style.top = `${tempTop}px`;
-                    this.elements.emptyGem.style.left = `${tempLeft}px`;
+                    this.elements.emptyGem.style.top = `${tempTop}%`;
+                    this.elements.emptyGem.style.left = `${tempLeft}%`;
                 }
             })
         })
