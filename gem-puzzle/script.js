@@ -6,7 +6,13 @@ const Game = {
         gems: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'],
         gem: null,
         currentGems: null,
-        emptyGem: null
+        emptyGem: null,
+        info: null,
+        turns: null,
+        time: null,
+        currentTime: null,
+        currentTurns: null,
+        timer: null
     },
 
 
@@ -23,15 +29,34 @@ const Game = {
 
         // create board
 
-        this.elements.wrapper = document.createElement('div'); // create wrapper
-        this.elements.board = document.createElement('div'); // create board
+        this.elements.wrapper = document.createElement('div');
+        this.elements.info = document.createElement('div');
+        this.elements.turns = document.createElement('div');
+        this.elements.time = document.createElement('div');
+        this.elements.newGame = document.createElement('div');
+        this.elements.board = document.createElement('div');
+        
         
         this.elements.wrapper.classList.add('wrapper');
+        this.elements.info.classList.add('info');
+        this.elements.turns.classList.add('turns');
+        this.elements.time.classList.add('time');
+        this.elements.newGame.classList.add('new-game');
         this.elements.board.classList.add('board');
         
-        this.elements.wrapper.appendChild(this.elements.board); // put board into wrapper
-        document.body.appendChild(this.elements.wrapper); // put wrapper into body
+        this.elements.wrapper.appendChild(this.elements.info);
+        this.elements.info.appendChild(this.elements.turns);
+        this.elements.info.appendChild(this.elements.time);
+        this.elements.info.appendChild(this.elements.newGame);
+        this.elements.wrapper.appendChild(this.elements.board);
+        document.body.appendChild(this.elements.wrapper);
 
+        this.elements.currentTime = 0;
+        this.elements.currentTurns = 0;
+        this.elements.turns.innerHTML = `Turns: ${this.elements.currentTurns}`;
+        this.elements.time.innerHTML = `Seconds: ${this.elements.currentTime}`;
+        this.elements.newGame.innerHTML = 'New Game';
+                
         // create elements
 
         this.elements.gems.forEach(element => {
@@ -115,6 +140,10 @@ const Game = {
 
         this.elements.currentGems = document.querySelectorAll('.gem');
         this.elements.emptyGem = document.querySelector('.gem-0');
+        
+        this.startNewGame();
+        this.moveGems();
+        
     },
 
 
@@ -160,16 +189,40 @@ const Game = {
 
                     this.elements.emptyGem.style.top = `${tempTop}%`;
                     this.elements.emptyGem.style.left = `${tempLeft}%`;
+
+                    this.elements.currentTurns++;
+                    this.elements.turns.innerHTML = `Turns: ${this.elements.currentTurns}`;
                 }
             })
         })
         
+    },
+
+
+    startTimer () {
+        this.elements.timer = setInterval(() => {
+            this.elements.currentTime++;
+            this.elements.time.innerHTML = `Seconds: ${this.elements.currentTime}`;
+        }, 1000);
+    },
+
+
+    stopTimer () {
+        clearInterval(this.elements.timer);
+    },
+
+
+    startNewGame () {
+        this.elements.newGame.addEventListener('click', () => {
+            document.body.innerHTML = '';
+            this.stopTimer();
+            this.init();
+            this.shuffleGems();
+            this.startTimer();
+        })
     }
 
 
 };
 
-
 Game.init();
-Game.shuffleGems();
-Game.moveGems();

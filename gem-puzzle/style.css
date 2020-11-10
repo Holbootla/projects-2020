@@ -8,6 +8,41 @@
     width: 100%;
     height: 100vh;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    height: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.turns {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.time {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-game {
+    width: 30%;
+    cursor: pointer;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -16,15 +51,16 @@
     box-sizing: content-box;
     width: 500px;
     height: 500px;
-    border: 5px solid #808080;
+    border: 5px solid #993fd6;
     position: relative;
+    background-color: #ffffff;
 }
 
 .gem {
     width: 25%;
     height: 25%;
-    background-color: #008000;
-    border: 5px solid #ffffff;
+    background-color: #4c0080;
+    border: 3px solid #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,8 +80,12 @@
 
 @media (max-width: 1279px) {
 
+    .info {
+        width: 380px;  
+        font-size: 0.9rem;     
+    }
+
     .board {
-        box-sizing: content-box;
         width: 380px;
         height: 380px;        
     }
@@ -54,8 +94,12 @@
 
 @media (max-width: 767px) {
 
+    .info {
+        width: 290px;        
+        font-size: 0.7rem;       
+    }
+
     .board {
-        box-sizing: content-box;
         width: 290px;
         height: 290px;        
     }
