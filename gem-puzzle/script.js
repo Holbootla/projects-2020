@@ -1,18 +1,17 @@
 const Game = {
     
     elements: {
-        wrapper: null,
-        board: null,
         gems: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'],
         gem: null,
         currentGems: null,
         emptyGem: null,
-        info: null,
         turns: null,
         time: null,
         currentTime: null,
+        currentTimeMinutes: null,
         currentTurns: null,
-        timer: null
+        timer: null,
+        history: []
     },
 
 
@@ -29,33 +28,38 @@ const Game = {
 
         // create board
 
-        this.elements.wrapper = document.createElement('div');
-        this.elements.info = document.createElement('div');
+        const wrapper = document.createElement('div');
+        const info = document.createElement('div');
         this.elements.turns = document.createElement('div');
         this.elements.time = document.createElement('div');
         this.elements.newGame = document.createElement('div');
-        this.elements.board = document.createElement('div');
+        const board = document.createElement('div');
+        let solveButton = document.createElement('div');
         
         
-        this.elements.wrapper.classList.add('wrapper');
-        this.elements.info.classList.add('info');
+        wrapper.classList.add('wrapper');
+        info.classList.add('info');
         this.elements.turns.classList.add('turns');
         this.elements.time.classList.add('time');
         this.elements.newGame.classList.add('new-game');
-        this.elements.board.classList.add('board');
+        board.classList.add('board');
+        solveButton.classList.add('solve-button');
         
-        this.elements.wrapper.appendChild(this.elements.info);
-        this.elements.info.appendChild(this.elements.turns);
-        this.elements.info.appendChild(this.elements.time);
-        this.elements.info.appendChild(this.elements.newGame);
-        this.elements.wrapper.appendChild(this.elements.board);
-        document.body.appendChild(this.elements.wrapper);
+        wrapper.appendChild(info);
+        info.appendChild(this.elements.turns);
+        info.appendChild(this.elements.time);
+        info.appendChild(this.elements.newGame);
+        wrapper.appendChild(board);
+        wrapper.appendChild(solveButton);
+        document.body.appendChild(wrapper);
 
         this.elements.currentTime = 0;
+        this.elements.currentTimeMinutes = 0;
         this.elements.currentTurns = 0;
         this.elements.turns.innerHTML = `Turns: ${this.elements.currentTurns}`;
-        this.elements.time.innerHTML = `Seconds: ${this.elements.currentTime}`;
+        this.elements.time.innerHTML = `Time: 0${this.elements.currentTimeMinutes}:0${this.elements.currentTime}`;
         this.elements.newGame.innerHTML = 'New Game';
+        solveButton.innerHTML = 'Solve Puzzle';
                 
         // create elements
 
@@ -135,7 +139,7 @@ const Game = {
             }
 
             this.elements.gem.insertAdjacentText('beforeend', element);
-            this.elements.board.appendChild(this.elements.gem); // put gem into board
+            board.appendChild(this.elements.gem); // put gem into board
         });
 
         this.elements.currentGems = document.querySelectorAll('.gem');
@@ -144,6 +148,10 @@ const Game = {
         this.startNewGame();
         this.moveGems();
         
+        solveButton.addEventListener('click', () => {
+            this.solveGame();
+        })
+
     },
 
 
@@ -164,6 +172,14 @@ const Game = {
             nearestElements[randomGem].style.top = `${parseInt(this.elements.emptyGem.style.top)}%`;
             nearestElements[randomGem].style.left = `${parseInt(this.elements.emptyGem.style.left)}%`;
 
+            this.elements.history.push([this.elements.emptyGem.style.top, this.elements.emptyGem.style.left]);
+                    if (this.elements.history.length > 2 &&
+                        this.elements.history[this.elements.history.length - 1][0] === this.elements.history[this.elements.history.length - 3][0] && 
+                        this.elements.history[this.elements.history.length - 1][1] === this.elements.history[this.elements.history.length - 3][1]) {
+                        this.elements.history.pop();
+                        this.elements.history.pop();
+                    }
+
             this.elements.emptyGem.style.top = `${tempTop}%`;
             this.elements.emptyGem.style.left = `${tempLeft}%`;
 
@@ -177,7 +193,7 @@ const Game = {
        this.elements.currentGems.forEach(element => {
             element.addEventListener('click', () => {
                 if (!element.classList.contains('gem-0') && this.isNearEmptyGem(element)) {
-                    
+
                     // change styles between element and emptyGem
                     let tempTop = parseInt(element.style.top);
                     let tempLeft = parseInt(element.style.left);
@@ -186,6 +202,14 @@ const Game = {
                     element.style.top = `${parseInt(this.elements.emptyGem.style.top)}%`;
                     element.style.left = `${parseInt(this.elements.emptyGem.style.left)}%`;
                     setTimeout(() => {element.style.transitionDuration = null;}, 500);
+
+                    this.elements.history.push([this.elements.emptyGem.style.top, this.elements.emptyGem.style.left]);
+                    if (this.elements.history.length > 2 &&
+                        this.elements.history[this.elements.history.length - 1][0] === this.elements.history[this.elements.history.length - 3][0] && 
+                        this.elements.history[this.elements.history.length - 1][1] === this.elements.history[this.elements.history.length - 3][1]) {
+                        this.elements.history.pop();
+                        this.elements.history.pop();
+                    }
 
                     this.elements.emptyGem.style.top = `${tempTop}%`;
                     this.elements.emptyGem.style.left = `${tempLeft}%`;
@@ -202,7 +226,21 @@ const Game = {
     startTimer () {
         this.elements.timer = setInterval(() => {
             this.elements.currentTime++;
-            this.elements.time.innerHTML = `Seconds: ${this.elements.currentTime}`;
+            if (this.elements.currentTime === 60) {
+                this.elements.currentTimeMinutes++;
+                this.elements.currentTime = 0;
+            }
+
+            if (this.elements.currentTimeMinutes < 10 && this.elements.currentTime < 10) {
+                this.elements.time.innerHTML = `Time: 0${this.elements.currentTimeMinutes}:0${this.elements.currentTime}`;
+            } else if (this.elements.currentTimeMinutes < 10 && this.elements.currentTime >= 10) {
+                this.elements.time.innerHTML = `Time: 0${this.elements.currentTimeMinutes}:${this.elements.currentTime}`;
+            } else if (this.elements.currentTimeMinutes >= 10 && this.elements.currentTime < 10) {
+                this.elements.time.innerHTML = `Time: ${this.elements.currentTimeMinutes}:0${this.elements.currentTime}`;
+            } else {
+                this.elements.time.innerHTML = `Time: ${this.elements.currentTimeMinutes}:${this.elements.currentTime}`;
+            }
+            
         }, 1000);
     },
 
@@ -215,11 +253,43 @@ const Game = {
     startNewGame () {
         this.elements.newGame.addEventListener('click', () => {
             document.body.innerHTML = '';
+            this.elements.history = [];
             this.stopTimer();
             this.init();
             this.shuffleGems();
             this.startTimer();
         })
+    },
+
+    solveGame () {
+        
+            this.stopTimer();
+            this.elements.currentTurns = 0;
+            this.elements.currentTime = 0;
+            this.elements.currentTimeMinutes = 0;
+            this.elements.turns.innerHTML = `Turns: ${this.elements.currentTurns}`;
+            this.elements.time.innerHTML = `Time: 0${this.elements.currentTimeMinutes}:0${this.elements.currentTime}`;
+            
+            
+            let currentElement = document.body.querySelector
+            (`[style="top: ${this.elements.history[this.elements.history.length - 1][0]}; left: ${this.elements.history[this.elements.history.length - 1][1]};"]`);
+
+            currentElement.style.transitionDuration = '0.1s';
+            currentElement.style.top = this.elements.emptyGem.style.top;;
+            currentElement.style.left = this.elements.emptyGem.style.left;
+            setTimeout(() => {currentElement.style.transitionDuration = null;}, 100);
+
+            this.elements.emptyGem.style.top = `${this.elements.history[this.elements.history.length - 1][0]}`;
+            this.elements.emptyGem.style.left = `${this.elements.history[this.elements.history.length - 1][1]}`;
+
+            this.elements.history.pop();
+        
+            if (this.elements.history.length === 0) return;
+
+            setTimeout(() => {
+                this.solveGame();
+            }, 100);
+
     }
 
 
