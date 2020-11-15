@@ -1,7 +1,9 @@
 const Game = {
     
     elements: {
-        gems: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'],
+        boardSize: 16,
+        gemSize: 25,
+        gems: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
         gem: null,
         currentGems: null,
         emptyGem: null,
@@ -11,20 +13,28 @@ const Game = {
         currentTimeMinutes: null,
         currentTurns: null,
         timer: null,
-        history: []
+        history: [],
+        newGame: null,
+        isNewGameClicked: false
     },
 
 
     isNearEmptyGem (element) {
-        return ((Math.abs(parseInt(element.style.top) -  parseInt(this.elements.emptyGem.style.top)) ===  25) &&
-                (Math.abs(parseInt(element.style.left) - parseInt(this.elements.emptyGem.style.left)) === 0)) ||
-               ((Math.abs(parseInt(element.style.top) -  parseInt(this.elements.emptyGem.style.top)) ===  0) &&
-                (Math.abs(parseInt(element.style.left) - parseInt(this.elements.emptyGem.style.left)) === 25));
+        return ((Math.abs(parseFloat(element.style.top) -  parseFloat(this.elements.emptyGem.style.top)) ===  this.elements.gemSize) &&
+                (Math.abs(parseFloat(element.style.left) - parseFloat(this.elements.emptyGem.style.left)) === 0)) ||
+               ((Math.abs(parseFloat(element.style.top) -  parseFloat(this.elements.emptyGem.style.top)) ===  0) &&
+                (Math.abs(parseFloat(element.style.left) - parseFloat(this.elements.emptyGem.style.left)) === this.elements.gemSize));
         
     },
     
 
-    init () {
+    init (boardSize = 16, gemSize = 25) {
+
+        this.elements.gems = [];
+
+        for (let i = 0; i < boardSize; i++) {
+            this.elements.gems.push(i);
+        }
 
         // create board
 
@@ -66,76 +76,390 @@ const Game = {
         this.elements.gems.forEach(element => {
             this.elements.gem = document.createElement('div');
             this.elements.gem.classList.add('gem');
-
-            switch (element) {
-                case '0' :
-                    this.elements.gem.classList.add(`gem-${element}`); 
-                    this.elements.gem.style.top = '75%';
-                    this.elements.gem.style.left = '75%';
+            
+            switch (gemSize) {
+                case 12.5 :
+                    this.elements.gem.classList.add('gem-8x8');
+                    switch (element) {
+                        case 0 :
+                            this.elements.gem.classList.add(`gem-0`); 
+                            this.elements.gem.style.top = '87.5%';
+                            this.elements.gem.style.left = '87.5%';
+                            break;
+                        case 1 :
+                            this.elements.gem.style.top = '0%';
+                            this.elements.gem.style.left = '0%';
+                            break;
+                        case 2 :
+                            this.elements.gem.style.top = '0%';
+                            this.elements.gem.style.left = '12.5%';
+                            break;
+                        case 3 :
+                            this.elements.gem.style.top = '0%';
+                            this.elements.gem.style.left = '25%';
+                            break;
+                        case 4 :
+                            this.elements.gem.style.top = '0%';
+                            this.elements.gem.style.left = '37.5%';
+                            break;
+                        case 5 :
+                            this.elements.gem.style.top = '0%';
+                            this.elements.gem.style.left = '50%';
+                            break;
+                        case 6 :
+                            this.elements.gem.style.top = '0%';
+                            this.elements.gem.style.left = '62.5%';
+                            break;
+                        case 7 :
+                            this.elements.gem.style.top = '0%';
+                            this.elements.gem.style.left = '75%';
+                            break;
+                        case 8 :
+                            this.elements.gem.style.top = '0%';
+                            this.elements.gem.style.left = '87.5%';
+                            break;
+                        case 9 :
+                            this.elements.gem.style.top = '12.5%';
+                            this.elements.gem.style.left = '0%';
+                            break;
+                        case 10 :
+                            this.elements.gem.style.top = '12.5%';
+                            this.elements.gem.style.left = '12.5%';
+                            break;
+                        case 11 :
+                            this.elements.gem.style.top = '12.5%';
+                            this.elements.gem.style.left = '25%';
+                            break;
+                        case 12 :
+                            this.elements.gem.style.top = '12.5%';
+                            this.elements.gem.style.left = '37.5%';
+                            break;
+                        case 13 :
+                            this.elements.gem.style.top = '12.5%';
+                            this.elements.gem.style.left = '50%';
+                            break;
+                        case 14 :
+                            this.elements.gem.style.top = '12.5%';
+                            this.elements.gem.style.left = '62.5%';
+                            break;
+                        case 15 :
+                            this.elements.gem.style.top = '12.5%';
+                            this.elements.gem.style.left = '75%';
+                            break;
+                        case 16 :
+                            this.elements.gem.style.top = '12.5%';
+                            this.elements.gem.style.left = '87.5%';
+                            break;
+                        case 17 :
+                            this.elements.gem.style.top = '25%';
+                            this.elements.gem.style.left = '0%';
+                            break;
+                        case 18 :
+                            this.elements.gem.style.top = '25%';
+                            this.elements.gem.style.left = '12.5%';
+                            break;
+                        case 19 :
+                            this.elements.gem.style.top = '25%';
+                            this.elements.gem.style.left = '25%';
+                            break;
+                        case 20 :
+                            this.elements.gem.style.top = '25%';
+                            this.elements.gem.style.left = '37.5%';
+                            break;
+                        case 21 :
+                            this.elements.gem.style.top = '25%';
+                            this.elements.gem.style.left = '50%';
+                            break;
+                        case 22 :
+                            this.elements.gem.style.top = '25%';
+                            this.elements.gem.style.left = '62.5%';
+                            break;
+                        case 23 :
+                            this.elements.gem.style.top = '25%';
+                            this.elements.gem.style.left = '75%';
+                            break;
+                        case 24 :
+                            this.elements.gem.style.top = '25%';
+                            this.elements.gem.style.left = '87.5%';
+                            break;
+                        case 25 :
+                            this.elements.gem.style.top = '37.5%';
+                            this.elements.gem.style.left = '0%';
+                            break;
+                        case 26 :
+                            this.elements.gem.style.top = '37.5%';
+                            this.elements.gem.style.left = '12.5%';
+                            break;
+                        case 27 :
+                            this.elements.gem.style.top = '37.5%';
+                            this.elements.gem.style.left = '25%';
+                            break;
+                        case 28 :
+                            this.elements.gem.style.top = '37.5%';
+                            this.elements.gem.style.left = '37.5%';
+                            break;
+                        case 29 :
+                            this.elements.gem.style.top = '37.5%';
+                            this.elements.gem.style.left = '50%';
+                            break;
+                        case 30 :
+                            this.elements.gem.style.top = '37.5%';
+                            this.elements.gem.style.left = '62.5%';
+                            break;
+                        case 31 :
+                            this.elements.gem.style.top = '37.5%';
+                            this.elements.gem.style.left = '75%';
+                            break;
+                        case 32 :
+                            this.elements.gem.style.top = '37.5%';
+                            this.elements.gem.style.left = '87.5%';
+                            break;
+                        case 33 :
+                            this.elements.gem.style.top = '50%';
+                            this.elements.gem.style.left = '0%';
+                            break;
+                        case 34 :
+                            this.elements.gem.style.top = '50%';
+                            this.elements.gem.style.left = '12.5%';
+                            break;
+                        case 35 :
+                            this.elements.gem.style.top = '50%';
+                            this.elements.gem.style.left = '25%';
+                            break;
+                        case 36 :
+                            this.elements.gem.style.top = '50%';
+                            this.elements.gem.style.left = '37.5%';
+                            break;
+                        case 37 :
+                            this.elements.gem.style.top = '50%';
+                            this.elements.gem.style.left = '50%';
+                            break;
+                        case 38 :
+                            this.elements.gem.style.top = '50%';
+                            this.elements.gem.style.left = '62.5%';
+                            break;
+                        case 39 :
+                            this.elements.gem.style.top = '50%';
+                            this.elements.gem.style.left = '75%';
+                            break;
+                        case 40 :
+                            this.elements.gem.style.top = '50%';
+                            this.elements.gem.style.left = '87.5%';
+                            break;
+                        case 41 :
+                            this.elements.gem.style.top = '62.5%';
+                            this.elements.gem.style.left = '0%';
+                            break;
+                        case 42 :
+                            this.elements.gem.style.top = '62.5%';
+                            this.elements.gem.style.left = '12.5%';
+                            break;
+                        case 43 :
+                            this.elements.gem.style.top = '62.5%';
+                            this.elements.gem.style.left = '25%';
+                            break;
+                        case 44 :
+                            this.elements.gem.style.top = '62.5%';
+                            this.elements.gem.style.left = '37.5%';
+                            break;
+                        case 45 :
+                            this.elements.gem.style.top = '62.5%';
+                            this.elements.gem.style.left = '50%';
+                            break;
+                        case 46 :
+                            this.elements.gem.style.top = '62.5%';
+                            this.elements.gem.style.left = '62.5%';
+                            break;
+                        case 47 :
+                            this.elements.gem.style.top = '62.5%';
+                            this.elements.gem.style.left = '75%';
+                            break;
+                        case 48 :
+                            this.elements.gem.style.top = '62.5%';
+                            this.elements.gem.style.left = '87.5%';
+                            break;
+                        case 49 :
+                            this.elements.gem.style.top = '75%';
+                            this.elements.gem.style.left = '0%';
+                            break;
+                        case 50 :
+                            this.elements.gem.style.top = '75%';
+                            this.elements.gem.style.left = '12.5%';
+                            break;
+                        case 51 :
+                            this.elements.gem.style.top = '75%';
+                            this.elements.gem.style.left = '25%';
+                            break;
+                        case 52 :
+                            this.elements.gem.style.top = '75%';
+                            this.elements.gem.style.left = '37.5%';
+                            break;
+                        case 53 :
+                            this.elements.gem.style.top = '75%';
+                            this.elements.gem.style.left = '50%';
+                            break;
+                        case 54 :
+                            this.elements.gem.style.top = '75%';
+                            this.elements.gem.style.left = '62.5%';
+                            break;
+                        case 55 :
+                            this.elements.gem.style.top = '75%';
+                            this.elements.gem.style.left = '75%';
+                            break;
+                        case 56 :
+                            this.elements.gem.style.top = '75%';
+                            this.elements.gem.style.left = '87.5%';
+                            break;
+                        case 57 :
+                            this.elements.gem.style.top = '87.5%';
+                            this.elements.gem.style.left = '0%';
+                            break;
+                        case 58 :
+                            this.elements.gem.style.top = '87.5%';
+                            this.elements.gem.style.left = '12.5%';
+                            break;
+                        case 59 :
+                            this.elements.gem.style.top = '87.5%';
+                            this.elements.gem.style.left = '25%';
+                            break;
+                        case 60 :
+                            this.elements.gem.style.top = '87.5%';
+                            this.elements.gem.style.left = '37.5%';
+                            break;
+                        case 61 :
+                            this.elements.gem.style.top = '87.5%';
+                            this.elements.gem.style.left = '50%';
+                            break;
+                        case 62 :
+                            this.elements.gem.style.top = '87.5%';
+                            this.elements.gem.style.left = '62.5%';
+                            break;
+                        case 63 :
+                            this.elements.gem.style.top = '87.5%';
+                            this.elements.gem.style.left = '75%';
+                            break;
+                        default :
+                            break;
+                    } 
                     break;
-                case '1' :
-                    this.elements.gem.style.top = '0%';
-                    this.elements.gem.style.left = '0%';
+                case 25 :
+                    this.elements.gem.classList.add('gem-4x4');
+                    switch (element) {
+                        case 0 :
+                            this.elements.gem.classList.add(`gem-0`); 
+                            this.elements.gem.style.top = '75%';
+                            this.elements.gem.style.left = '75%';
+                            break;
+                        case 1 :
+                            this.elements.gem.style.top = '0%';
+                            this.elements.gem.style.left = '0%';
+                            break;
+                        case 2 :
+                            this.elements.gem.style.top = '0%';
+                            this.elements.gem.style.left = '25%';
+                            break;
+                        case 3 :
+                            this.elements.gem.style.top = '0%';
+                            this.elements.gem.style.left = '50%';
+                            break;
+                        case 4 :
+                            this.elements.gem.style.top = '0%';
+                            this.elements.gem.style.left = '75%';
+                            break;
+                        case 5 :
+                            this.elements.gem.style.top = '25%';
+                            this.elements.gem.style.left = '0%';
+                            break;
+                        case 6 :
+                            this.elements.gem.style.top = '25%';
+                            this.elements.gem.style.left = '25%';
+                            break;
+                        case 7 :
+                            this.elements.gem.style.top = '25%';
+                            this.elements.gem.style.left = '50%';
+                            break;
+                        case 8 :
+                            this.elements.gem.style.top = '25%';
+                            this.elements.gem.style.left = '75%';
+                            break;
+                        case 9 :
+                            this.elements.gem.style.top = '50%';
+                            this.elements.gem.style.left = '0%';
+                            break;
+                        case 10 :
+                            this.elements.gem.style.top = '50%';
+                            this.elements.gem.style.left = '25%';
+                            break;
+                        case 11 :
+                            this.elements.gem.style.top = '50%';
+                            this.elements.gem.style.left = '50%';
+                            break;
+                        case 12 :
+                            this.elements.gem.style.top = '50%';
+                            this.elements.gem.style.left = '75%';
+                            break;
+                        case 13 :
+                            this.elements.gem.style.top = '75%';
+                            this.elements.gem.style.left = '0%';
+                            break;
+                        case 14 :
+                            this.elements.gem.style.top = '75%';
+                            this.elements.gem.style.left = '25%';
+                            break;
+                        case 15 :
+                            this.elements.gem.style.top = '75%';
+                            this.elements.gem.style.left = '50%';
+                            break;
+                        default :
+                            break;
+                    }
                     break;
-                case '2' :
-                    this.elements.gem.style.top = '0%';
-                    this.elements.gem.style.left = '25%';
-                    break;
-                case '3' :
-                    this.elements.gem.style.top = '0%';
-                    this.elements.gem.style.left = '50%';
-                    break;
-                case '4' :
-                    this.elements.gem.style.top = '0%';
-                    this.elements.gem.style.left = '75%';
-                    break;
-                case '5' :
-                    this.elements.gem.style.top = '25%';
-                    this.elements.gem.style.left = '0%';
-                    break;
-                case '6' :
-                    this.elements.gem.style.top = '25%';
-                    this.elements.gem.style.left = '25%';
-                    break;
-                case '7' :
-                    this.elements.gem.style.top = '25%';
-                    this.elements.gem.style.left = '50%';
-                    break;
-                case '8' :
-                    this.elements.gem.style.top = '25%';
-                    this.elements.gem.style.left = '75%';
-                    break;
-                case '9' :
-                    this.elements.gem.style.top = '50%';
-                    this.elements.gem.style.left = '0%';
-                    break;
-                case '10' :
-                    this.elements.gem.style.top = '50%';
-                    this.elements.gem.style.left = '25%';
-                    break;
-                case '11' :
-                    this.elements.gem.style.top = '50%';
-                    this.elements.gem.style.left = '50%';
-                    break;
-                case '12' :
-                    this.elements.gem.style.top = '50%';
-                    this.elements.gem.style.left = '75%';
-                    break;
-                case '13' :
-                    this.elements.gem.style.top = '75%';
-                    this.elements.gem.style.left = '0%';
-                    break;
-                case '14' :
-                    this.elements.gem.style.top = '75%';
-                    this.elements.gem.style.left = '25%';
-                    break;
-                case '15' :
-                    this.elements.gem.style.top = '75%';
-                    this.elements.gem.style.left = '50%';
-                    break;
+                case 33.333 :
+                    this.elements.gem.classList.add('gem-3x3');
+                    switch (element) {
+                        case 0 :
+                            this.elements.gem.classList.add(`gem-0`); 
+                            this.elements.gem.style.top = '66.666%';
+                            this.elements.gem.style.left = '66.666%';
+                            break;
+                        case 1 :
+                            this.elements.gem.style.top = '0%';
+                            this.elements.gem.style.left = '0%';
+                            break;
+                        case 2 :
+                            this.elements.gem.style.top = '0%';
+                            this.elements.gem.style.left = '33.333%';
+                            break;
+                        case 3 :
+                            this.elements.gem.style.top = '0%';
+                            this.elements.gem.style.left = '66.666%';
+                            break;
+                        case 4 :
+                            this.elements.gem.style.top = '33.333%';
+                            this.elements.gem.style.left = '0%';
+                            break;
+                        case 5 :
+                            this.elements.gem.style.top = '33.333%';
+                            this.elements.gem.style.left = '33.333%';
+                            break;
+                        case 6 :
+                            this.elements.gem.style.top = '33.333%';
+                            this.elements.gem.style.left = '66.666%';
+                            break;
+                        case 7 :
+                            this.elements.gem.style.top = '66.666%';
+                            this.elements.gem.style.left = '0%';
+                            break;
+                        case 8 :
+                            this.elements.gem.style.top = '66.666%';
+                            this.elements.gem.style.left = '33.333%';
+                            break;
+                        default :
+                            break;
+                    }
+                    break;  
                 default :
-                    break;
-                
+                    break; 
             }
 
             this.elements.gem.insertAdjacentText('beforeend', element);
@@ -152,6 +476,7 @@ const Game = {
             this.solveGame();
         })
 
+        this.elements.isNewGameClicked = false;
     },
 
 
@@ -166,11 +491,11 @@ const Game = {
             
             const randomGem = Math.floor(Math.random() * nearestElements.length);
             // change styles between element and emptyGem
-            let tempTop = parseInt(nearestElements[randomGem].style.top);
-            let tempLeft = parseInt(nearestElements[randomGem].style.left);
+            let tempTop = nearestElements[randomGem].style.top;
+            let tempLeft = nearestElements[randomGem].style.left;
 
-            nearestElements[randomGem].style.top = `${parseInt(this.elements.emptyGem.style.top)}%`;
-            nearestElements[randomGem].style.left = `${parseInt(this.elements.emptyGem.style.left)}%`;
+            nearestElements[randomGem].style.top = this.elements.emptyGem.style.top;
+            nearestElements[randomGem].style.left = this.elements.emptyGem.style.left;
 
             this.elements.history.push([this.elements.emptyGem.style.top, this.elements.emptyGem.style.left]);
                     if (this.elements.history.length > 2 &&
@@ -180,11 +505,10 @@ const Game = {
                         this.elements.history.pop();
                     }
 
-            this.elements.emptyGem.style.top = `${tempTop}%`;
-            this.elements.emptyGem.style.left = `${tempLeft}%`;
+            this.elements.emptyGem.style.top = tempTop;
+            this.elements.emptyGem.style.left = tempLeft;
 
         }
-
     },
 
 
@@ -195,12 +519,12 @@ const Game = {
                 if (!element.classList.contains('gem-0') && this.isNearEmptyGem(element)) {
 
                     // change styles between element and emptyGem
-                    let tempTop = parseInt(element.style.top);
-                    let tempLeft = parseInt(element.style.left);
+                    let tempTop = element.style.top;
+                    let tempLeft = element.style.left;
                     
                     element.style.transitionDuration = '0.5s';
-                    element.style.top = `${parseInt(this.elements.emptyGem.style.top)}%`;
-                    element.style.left = `${parseInt(this.elements.emptyGem.style.left)}%`;
+                    element.style.top = this.elements.emptyGem.style.top;
+                    element.style.left = this.elements.emptyGem.style.left;
                     setTimeout(() => {element.style.transitionDuration = null;}, 500);
 
                     this.elements.history.push([this.elements.emptyGem.style.top, this.elements.emptyGem.style.left]);
@@ -211,8 +535,8 @@ const Game = {
                         this.elements.history.pop();
                     }
 
-                    this.elements.emptyGem.style.top = `${tempTop}%`;
-                    this.elements.emptyGem.style.left = `${tempLeft}%`;
+                    this.elements.emptyGem.style.top = tempTop;
+                    this.elements.emptyGem.style.left = tempLeft;
 
                     this.elements.currentTurns++;
                     this.elements.turns.innerHTML = `Turns: ${this.elements.currentTurns}`;
@@ -251,18 +575,84 @@ const Game = {
 
 
     startNewGame () {
-        this.elements.newGame.addEventListener('click', () => {
-            document.body.innerHTML = '';
-            this.elements.history = [];
-            this.stopTimer();
-            this.init();
-            this.shuffleGems();
-            this.startTimer();
+            this.elements.newGame.addEventListener('click', () => {
+
+            this.elements.isNewGameClicked = true;
+
+            const popupNewGame = document.createElement('div');
+            const newGameTitle =  document.createElement('div');
+            const newGame3x3 =  document.createElement('div');
+            const newGame4x4 =  document.createElement('div');
+            const newGame8x8 =  document.createElement('div');
+            const closeButton =  document.createElement('div');
+
+            popupNewGame.classList.add('popup-new-game');
+            newGameTitle.classList.add('popup-new-game-title');
+            newGame3x3.classList.add('popup-new-game-content');
+            newGame4x4.classList.add('popup-new-game-content');
+            newGame8x8.classList.add('popup-new-game-content');
+            closeButton.classList.add('popup-new-game-close');
+
+            newGameTitle.innerText = 'Choose size\nof board:';
+            newGame3x3.innerText = '3 x 3';
+            newGame4x4.innerText = '4 x 4';
+            newGame8x8.innerText = '8 x 8';
+            closeButton.innerText = 'close';
+
+            document.body.appendChild(popupNewGame);
+            popupNewGame.appendChild(newGameTitle);
+            popupNewGame.appendChild(newGame3x3);
+            popupNewGame.appendChild(newGame4x4);
+            popupNewGame.appendChild(newGame8x8);
+            popupNewGame.appendChild(closeButton);
+
+            newGame3x3.addEventListener('click', () => {
+                document.body.innerHTML = '';
+                this.elements.isNewGameClicked = true;
+                this.elements.history = [];
+                this.elements.boardSize = 9;
+                this.elements.gemSize = 33.333;
+                this.stopTimer();
+                this.init(9, 33.333);
+                this.shuffleGems();
+                this.startTimer();
+            })
+
+            newGame4x4.addEventListener('click', () => {
+                document.body.innerHTML = '';
+                this.elements.isNewGameClicked = true;
+                this.elements.history = [];
+                this.elements.boardSize = 16;
+                this.elements.gemSize = 25;
+                this.stopTimer();
+                this.init(16, 25);
+                this.shuffleGems();
+                this.startTimer();
+            })
+
+            newGame8x8.addEventListener('click', () => {
+                document.body.innerHTML = '';
+                this.elements.isNewGameClicked = true;
+                this.elements.history = [];
+                this.elements.boardSize = 64;
+                this.elements.gemSize = 12.5;
+                this.stopTimer();
+                this.init(64, 12.5);
+                this.shuffleGems();
+                this.startTimer();
+            })
+
+            closeButton.addEventListener('click', () => {
+                popupNewGame.remove();
+                this.elements.isNewGameClicked = false;
+            });
         })
     },
 
     solveGame () {
-        
+
+            if (this.elements.isNewGameClicked === true) return;
+  
             this.stopTimer();
             this.elements.currentTurns = 0;
             this.elements.currentTime = 0;
@@ -284,7 +674,7 @@ const Game = {
 
             this.elements.history.pop();
         
-            if (this.elements.history.length === 0) return;
+            if (this.elements.history.length === 0 || this.elements.isNewGameClicked === true) return;
 
             setTimeout(() => {
                 this.solveGame();
