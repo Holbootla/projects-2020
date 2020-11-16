@@ -26,7 +26,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .popup-new-game-title {
@@ -105,8 +105,8 @@
 
 .board {
     box-sizing: content-box;
-    width: 500px;
-    height: 500px;
+    width: min(50vw, 50vh);
+    height: min(50vw, 50vh);
     border: 5px solid #993fd6;
     position: relative;
     background-color: #ffffff;
@@ -168,8 +168,8 @@
     }
 
     .board {
-        width: 380px;
-        height: 380px;        
+        width: min(60vw, 60vh);
+        height: min(60vw, 60vh);     
     }
 
     .solve-button {
@@ -198,8 +198,8 @@
     }
 
     .board {
-        width: 290px;
-        height: 290px;        
+        width: min(80vw, 80vh);
+        height: min(80vw, 80vh);        
     }
 
     .gem {
