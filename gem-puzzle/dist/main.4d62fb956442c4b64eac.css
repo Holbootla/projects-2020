@@ -26,7 +26,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.95);
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .popup-new-game-title {
@@ -70,15 +70,30 @@
     transition: 0.3s;
 }
 
+.new-game:hover {
+    text-shadow: 0px 0px 20px #FFFFFF;
+    transition: 0.3s;
+}
+
+.toggle-sounds:hover {
+    text-shadow: 0px 0px 20px #FFFFFF;
+    transition: 0.3s;
+}
+
+.solve-button:hover {
+    text-shadow: 0px 0px 20px #FFFFFF;
+    transition: 0.3s;
+}
+
 .info {
     display: flex;
     justify-content: space-between;
-    width: 500px;
+    width: min(50vw, 50vh);
     height: 30px;
     font-family: 'Courier New', Courier, monospace;
     color: #ffffff;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1rem;
 }
 
 .turns {
@@ -105,8 +120,8 @@
 
 .board {
     box-sizing: content-box;
-    width: 500px;
-    height: 500px;
+    width: min(50vw, 50vh);
+    height: min(50vw, 50vh);
     border: 5px solid #993fd6;
     position: relative;
     background-color: #ffffff;
@@ -148,7 +163,7 @@
 
 .solve-button {
     display: flex;
-    width: 100%px;
+    width: 100%;
     height: 30px;
     font-family: 'Courier New', Courier, monospace;
     color: #ffffff;
@@ -157,22 +172,40 @@
     cursor: pointer;    
     justify-content: center;
     align-items: center;
+    margin-bottom: 1vh;
+}
+
+.toggle-sounds {
+    display: flex;
+    width: 100%;
+    height: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.3rem;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
 }
 
 
 @media (max-width: 1279px) {
 
     .info {
-        width: 380px;  
+        width: min(60vw, 60vh);  
         font-size: 0.9rem;     
     }
 
     .board {
-        width: 380px;
-        height: 380px;        
+        width: min(60vw, 60vh);
+        height: min(60vw, 60vh);     
     }
 
     .solve-button {
+        font-size: 0.9rem; 
+    }
+
+    .toggle-sounds {
         font-size: 0.9rem; 
     }
 
@@ -190,16 +223,16 @@
 
 }
 
-@media (max-width: 767px) {
+@media (max-width: 600px) {
 
     .info {
-        width: 290px;        
+        width: min(80vw, 80vh);    
         font-size: 0.7rem;       
     }
 
     .board {
-        width: 290px;
-        height: 290px;        
+        width: min(80vw, 80vh);
+        height: min(80vw, 80vh);        
     }
 
     .gem {
@@ -207,6 +240,10 @@
     }
 
     .solve-button {
+        font-size: 0.7rem; 
+    }
+
+    .toggle-sounds {
         font-size: 0.7rem; 
     }
 
