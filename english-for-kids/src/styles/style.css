@@ -1,0 +1,227 @@
+* {
+    margin: 0;
+    padding: 0;
+    cursor: default;
+    box-sizing: border-box;
+}
+
+.no-scroll {
+    overflow-y: hidden;
+}
+
+.wrapper {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;    
+    padding: 40px 40px;
+}
+
+.toggle-game-mode-button {
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    border: 3px solid #ff2222;
+    border-radius: 20px;
+    display: flex;
+    padding: 3px;
+    align-items: center;
+}
+
+.toggle-game-mode-button-switcher {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background: #3214f8;
+    flex: 1;
+}
+
+.toggle-game-mode-button-text {
+    font-family: 'Nerko One', cursive;
+    font-size: 24px;
+    color: #ff2222;
+    text-align: center;
+    cursor: pointer;
+    flex: 2;
+}
+
+.hamburger-menu-button {
+    z-index: 101;
+    cursor: pointer;
+    rotate(360deg);
+    transition: 0.3s;
+}
+
+.hamburger-menu-button-close {
+    z-index: 101;
+    cursor: pointer;
+    transform: translateX(180px);    
+    transition: 0.3s;
+}
+
+.blackout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99;
+    display: none;
+    transition: 0.1s;
+}
+
+.blackout-on {
+    display: block;
+    transition: 0.1s;
+}
+
+.hamburger-menu-button-line-1 {
+    width: 50px;
+    height: 4px;
+    background-color: #ff2222;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hamburger-menu-button-line-2 {
+    width: 50px;
+    height: 4px;
+    background-color: #ff2222;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+.hamburger-menu-button-line-3 {
+    width: 50px;
+    height: 4px;
+    background-color: #ff2222;
+    border-radius: 2px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hamburger-menu-button-line-1-close {
+    background-color: #ffffff;
+    transform: translateY(14px) rotate(-45deg);
+    transition: 0.3s;
+}
+
+.hamburger-menu-button-line-2-close {
+    background-color: #ffffff;
+    visibility: hidden;
+    transition: 0.1s;
+}
+
+.hamburger-menu-button-line-3-close {
+    background-color: #ffffff;
+    transform: translateY(-14px) rotate(45deg);
+    transition: 0.3s;
+}
+
+.hamburger-menu {
+    width: 320px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: -320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;    
+    background: #ff2222;   
+    transition: 0.3s; 
+}
+
+.hamburger-menu-opened {
+    left: 0px; 
+    transition: 0.3s; 
+}
+
+.navigation-list {
+    list-style: none;
+}
+
+.navigation-item {
+    margin: 2vh;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: 'Nerko One', cursive;
+    font-size: 30px;
+    text-align: center;    
+    transition: 0.2s;
+}
+
+.navigation-item:hover {
+    letter-spacing: 5px;
+    transition: 0.2s;
+    text-shadow: 0px 0px 20px #ffffff;
+}
+
+.main-container {
+    width: 100%;
+    height: 100%;
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-grow: 1;
+}
+
+.stars {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.cards {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.card-theme {
+    min-width: 300px;
+    width: 300px;
+    height: 200px;
+    border: 2px solid black;
+    margin: 10px;
+}
+
+.start-game-button {
+    margin-top: 20px;
+    width: 200px;
+    height: 50px;
+    background: #ff2222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    font-family: 'Nerko One', cursive;
+    font-size: 24px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.footer-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    background: #3214f8;
+    color: #ffffff;
+}
