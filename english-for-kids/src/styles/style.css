@@ -24,33 +24,56 @@
     padding: 40px 40px;
 }
 
-.toggle-game-mode-button {
+.game-mode-button {
     cursor: pointer;
-    width: 100px;
+    width: 110px;
     height: 40px;
-    border: 3px solid #ff2222;
+    border: 3px solid #3214f8;
     border-radius: 20px;
-    display: flex;
     padding: 3px;
-    align-items: center;
+    position: relative;
 }
 
-.toggle-game-mode-button-switcher {
+.game-mode-button-on {
+    border: 3px solid #ff2222;    
+    transition: 0.2s;
+}
+
+.game-mode-button-switcher {
+    position: absolute;
+    top: 2px;
+    left: 2px;
     cursor: pointer;
     width: 30px;
     height: 30px;
     border-radius: 15px;
     background: #3214f8;
-    flex: 1;
+    transition: 0.2s;
 }
 
-.toggle-game-mode-button-text {
+.game-mode-button-switcher-on {
+    transform: translateX(70px);
+    background: #ff2222;
+    transition: 0.2s;
+}
+
+.game-mode-button-text {
+    position: absolute;
+    top: 2px;
+    right: 15px;
     font-family: 'Nerko One', cursive;
     font-size: 24px;
     color: #ff2222;
     text-align: center;
     cursor: pointer;
     flex: 2;
+    transition: 0.2s;
+}
+
+.game-mode-button-text-on {
+    transform: translateX(-25px);
+    color: #3214f8;
+    transition: 0.2s;
 }
 
 .hamburger-menu-button {
