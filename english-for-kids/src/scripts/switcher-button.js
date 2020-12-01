@@ -1,4 +1,4 @@
-const switcherButton = function () {
+const toggleSwitcherButton = function () {
     
     const gameModeButton = document.querySelector('.game-mode-button');
     const gameModeButtonSwitcher = document.querySelector('.game-mode-button-switcher');
@@ -20,4 +20,4 @@ const switcherButton = function () {
     
 };
 
-export { switcherButton };
+export { toggleSwitcherButton };

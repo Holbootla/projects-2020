@@ -1,3 +1,5 @@
+import { cards } from './../assets/data/cards.js';
+
 const toggleHamburgerMenu = function () {
     const hamburgerMenuButton = document.querySelector('.hamburger-menu-button');
     const hamburgerMenuButtonLine1 = document.querySelector('.hamburger-menu-button-line-1');
@@ -25,6 +27,18 @@ const toggleHamburgerMenu = function () {
     blackout.classList.remove('blackout-on');
     document.body.classList.remove('no-scroll');
     })
+
+    const navigationList = document.querySelector('.navigation-list');
+    
+    navigationList.insertAdjacentHTML('beforeend', `
+    <li class="navigation-item-current" data-main>Main page</li>
+    `);
+
+    cards[0].forEach((element) => {
+        navigationList.insertAdjacentHTML('beforeend', `
+        <li class="navigation-item" data-${element}>${element}</li>
+        `);
+    })   
 };
 
 export { toggleHamburgerMenu };

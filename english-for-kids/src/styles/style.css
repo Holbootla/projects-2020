@@ -87,7 +87,6 @@ a {
 .hamburger-menu-button {
     z-index: 101;
     cursor: pointer;
-    rotate(360deg);
     transition: 0.3s;
 }
 
@@ -103,7 +102,7 @@ a {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: calc(100vh + 100px);
     background: rgba(0, 0, 0, 0.8);
     z-index: 99;
     display: none;
@@ -164,7 +163,8 @@ a {
 
 .hamburger-menu {
     width: 320px;
-    height: 100vh;
+    height: calc(100vh + 100px);
+    padding-bottom: 100px;
     position: absolute;
     top: 0;
     left: -320px;
@@ -195,6 +195,17 @@ a {
     transition: 0.2s;
 }
 
+.navigation-item-current {
+    margin: 2vh;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: 'Nerko One', cursive;
+    font-size: 30px;
+    text-align: center;    
+    transition: 0.2s;
+    text-decoration: underline;
+}
+
 .navigation-item:hover {
     letter-spacing: 5px;
     transition: 0.2s;
@@ -219,7 +230,7 @@ a {
     color: #ff2222;
 }
 
-.cards {
+.cards-container {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -231,21 +242,16 @@ a {
     min-width: 300px;
     width: 300px;
     height: 200px;
-    border: 2px solid black;
-    margin: 10px;
+    margin: 10px;    
+    box-shadow: 0 0 5px #000000;
     position: relative;
     cursor: pointer;
     transition: 0.2s;
 }
 
 .card-theme:hover {
-    transform: translate(3px, 3px);
-    box-shadow: -1px -1px 5px #505050;
+    transform: scale(1.03);
     transition: 0.2s;
-}
-
-.card-theme-image {
-
 }
 
 .card-theme-title {
@@ -254,9 +260,9 @@ a {
     left: 50%;
     transform: translateX(-50%);
     color: #ffffff;
-    text-shadow: 0px 0px 5px #000000;
+    text-shadow: 2px 2px 5px #000000, -2px -2px 5px #000000;
     font-family: 'Nerko One', cursive;
-    font-size: 30px;
+    font-size: 42px;
     text-align: center;
     cursor: pointer;
 }

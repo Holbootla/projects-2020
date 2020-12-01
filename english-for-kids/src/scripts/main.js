@@ -1,5 +1,7 @@
+import { renderThemeCards } from './render-theme-cards.js';
 import { toggleHamburgerMenu } from './hamburger-menu.js';
-import { switcherButton } from './switcher-button.js';
+import { toggleSwitcherButton } from './switcher-button.js';
 
+renderThemeCards();
 toggleHamburgerMenu();
-switcherButton();
+toggleSwitcherButton();
