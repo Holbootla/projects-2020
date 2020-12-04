@@ -91,8 +91,6 @@ a {
 }
 
 .hamburger-menu-button-close {
-    z-index: 101;
-    cursor: pointer;
     transform: translateX(180px);    
     transition: 0.3s;
 }
@@ -143,19 +141,19 @@ a {
     transition: 0.3s;
 }
 
-.hamburger-menu-button-line-1-close {
+.hamburger-menu-button-close :nth-child(1) {
     background-color: #ffffff;
     transform: translateY(14px) rotate(-45deg);
     transition: 0.3s;
 }
 
-.hamburger-menu-button-line-2-close {
+.hamburger-menu-button-close :nth-child(2) {
     background-color: #ffffff;
     visibility: hidden;
     transition: 0.1s;
 }
 
-.hamburger-menu-button-line-3-close {
+.hamburger-menu-button-close :nth-child(3) {
     background-color: #ffffff;
     transform: translateY(-14px) rotate(45deg);
     transition: 0.3s;
@@ -243,6 +241,7 @@ a {
     width: 300px;
     height: 200px;
     margin: 10px;    
+    background-size: cover;
     box-shadow: 0 0 5px #000000;
     position: relative;
     cursor: pointer;
@@ -265,6 +264,86 @@ a {
     font-size: 42px;
     text-align: center;
     cursor: pointer;
+}
+
+.card-word {
+    background-color: transparent;
+    perspective: 1000px;
+    min-width: 300px;
+    width: 300px;
+    height: 200px;
+    margin: 10px; 
+    transition: 0.2s;
+}
+
+.card-word:hover {
+    transform: scale(1.03);
+    transition: 0.2s;
+}
+
+.card-word-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    box-shadow: 0 0 5px #000000;
+}
+
+.card-word-flip {
+    transform: rotateY(180deg);
+}
+
+.card-word-front, .card-word-back {
+    background-size: cover;
+    position: absolute;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.card-word-back {
+    transform: rotateY(180deg);
+}
+
+.card-word-title {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff;
+    text-shadow: 2px 2px 5px #000000, -2px -2px 5px #000000;
+    font-family: 'Nerko One', cursive;
+    font-size: 42px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.card-word-flip-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 42px;
+    height: 42px;
+    background-color: #ff000082;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.card-word-flip-icon:hover {
+    transform: scale(1.1);
+    transition: 0.1s;
+}
+
+.card-word-flip-icon::before {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    content: url(../assets/icons/flip-icon.svg);
+    width: 42px;
+    height: 42px;
 }
 
 .start-game-button {
