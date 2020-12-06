@@ -1,5 +1,8 @@
 import { cards } from '../assets/data/cards.js';
 import { playSound } from './play-sound.js';
+import { turnOnPlayMode } from './play-mode.js';
+import { turnOffPlayMode } from './play-mode.js';
+import { PLAY_MODE } from './switcher-button.js';
 
 const renderWordsCards = function (theme) {
     
@@ -8,6 +11,11 @@ const renderWordsCards = function (theme) {
     const wordsBlock = cards[cards[0].indexOf(theme) + 1];
 
     cardsContainer.innerHTML = '';
+
+    if (document.querySelector('.theme-title')) {
+        document.querySelector('.theme-title').remove()};
+
+    cardsContainer.insertAdjacentHTML('beforebegin', `<div class="theme-title">- ${theme} -</div>`);
 
     wordsBlock.forEach((element) => {
         cardsContainer.insertAdjacentHTML('beforeend', `
@@ -44,7 +52,20 @@ const renderWordsCards = function (theme) {
             });
         });
     });
-    
+
+    const mainPageNavigationItem = document.querySelector('[data-main]');
+    const currentNavigationItem = document.querySelector(`[data-${theme}]`);
+    currentNavigationItem.classList.replace('navigation-item', 'navigation-item-current');
+    mainPageNavigationItem.classList.replace('navigation-item-current', 'navigation-item');
+
+    if (document.querySelector('.start-game-button')) {
+        document.querySelector('.start-game-button').remove();
+    }
+
+    if (PLAY_MODE) {
+        turnOnPlayMode();
+    }
+           
 };
 
 export { renderWordsCards };

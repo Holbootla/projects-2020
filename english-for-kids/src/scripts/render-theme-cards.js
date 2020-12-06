@@ -7,6 +7,9 @@ const renderThemeCards = function () {
 
     cardsContainer.innerHTML = '';
 
+    if (document.querySelector('.theme-title')) {
+        document.querySelector('.theme-title').remove()};
+
     cards[0].forEach((element) => {
         cardsContainer.insertAdjacentHTML('beforeend', `
         <div class="card-theme" style="background: url(../src/assets/images/${element}.jpg); background-size: cover;">
@@ -22,6 +25,10 @@ const renderThemeCards = function () {
             renderWordsCards(element.innerText);
         })
     })
+
+    if (document.querySelector('.start-game-button')) {
+        document.querySelector('.start-game-button').remove();
+    }
     
 };
 

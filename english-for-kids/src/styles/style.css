@@ -17,6 +17,10 @@ a {
     overflow-y: hidden;
 }
 
+.display-none {
+    display: none;
+}
+
 .wrapper {
     width: 100%;
     min-height: 100vh;
@@ -226,6 +230,14 @@ a {
     margin-bottom: 20px;
     font-size: 42px;
     color: #ff2222;
+}
+
+.theme-title {
+    margin: 1vh;
+    color: #3214f8;
+    font-family: 'Nerko One', cursive;
+    font-size: 42px;
+    text-align: center; 
 }
 
 .cards-container {
