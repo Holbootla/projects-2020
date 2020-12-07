@@ -4,7 +4,8 @@ import { renderWordsCards } from './render-words-cards.js';
 const renderThemeCards = function () {
     
     const cardsContainer = document.querySelector('.cards-container');
-
+    const starsContainer = document.querySelector('.stars');
+    starsContainer.innerHTML = '';
     cardsContainer.innerHTML = '';
 
     if (document.querySelector('.theme-title')) {

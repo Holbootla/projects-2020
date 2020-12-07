@@ -1,12 +1,13 @@
 import { cards } from '../assets/data/cards.js';
 import { playSound } from './play-sound.js';
 import { turnOnPlayMode } from './play-mode.js';
-import { turnOffPlayMode } from './play-mode.js';
 import { PLAY_MODE } from './switcher-button.js';
 
 const renderWordsCards = function (theme) {
     
     const cardsContainer = document.querySelector('.cards-container');
+    const starsContainer = document.querySelector('.stars');
+    starsContainer.innerHTML = '';
 
     const wordsBlock = cards[cards[0].indexOf(theme) + 1];
 
@@ -21,11 +22,11 @@ const renderWordsCards = function (theme) {
         cardsContainer.insertAdjacentHTML('beforeend', `
         <div class="card-word">
             <div class="card-word-inner">
-                <div class="card-word-front" style="background: url(./../src/assets/${element.image})">
+                <div class="card-word-front" style="background-image: url(./../src/assets/${element.image})">
                     <div class="card-word-title">${element.word}</div>
                     <div class="card-word-flip-icon"></div>
                 </div>
-                <div class="card-word-back" style="background: url(./../src/assets/${element.image})">
+                <div class="card-word-back" style="background-image: url(./../src/assets/${element.image})">
                     <div class="card-word-title">${element.translation}</div>
                 </div>
             </div>
@@ -37,7 +38,9 @@ const renderWordsCards = function (theme) {
 
     cardWord.forEach(element => {
         element.addEventListener('click', () => {
-            playSound(element.innerText);
+            if (!element.querySelector('.card-word-title').classList.contains('z-index-1')){
+                playSound(element.innerText);
+            }            
         });
     });
     

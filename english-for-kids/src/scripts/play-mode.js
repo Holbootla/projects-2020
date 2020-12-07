@@ -1,3 +1,5 @@
+import { startGame } from './game-process.js';
+
 const mainContainer = document.querySelector('.main-container');
 
 const turnOnPlayMode = function () {
@@ -10,7 +12,7 @@ const turnOnPlayMode = function () {
             element.classList.add('display-none');
         })
         cardWordTitle.forEach(element => {
-            element.classList.add('display-none');
+            element.classList.add('z-index-1');
         })
 
         mainContainer.insertAdjacentHTML('beforeend', `
@@ -18,6 +20,8 @@ const turnOnPlayMode = function () {
                 Start game
             </div>
         `);
+        
+        startGame();
     }
 
 };
@@ -33,7 +37,7 @@ const turnOffPlayMode = function () {
             element.classList.remove('display-none');
         })
         cardWordTitle.forEach(element => {
-            element.classList.remove('display-none');
+            element.classList.remove('z-index-1');
         })
 
     }

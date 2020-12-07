@@ -247,6 +247,206 @@ const cards = [
         image: 'images/laugh.jpg',
         audioSrc: 'audio/laugh.mp3'
       }
+    ],
+    [
+      {
+        word: 'banana',
+        translation: 'банан',
+        image: 'images/banana.jpg',
+        audioSrc: 'audio/banana.mp3'
+      },
+      {
+        word: 'orange',
+        translation: 'апельсин',
+        image: 'images/orange.jpg',
+        audioSrc: 'audio/orange.mp3'
+      },
+      {
+        word: 'apple',
+        translation: 'яблоко',
+        image: 'images/apple.jpg',
+        audioSrc: 'audio/apple.mp3'
+      },
+      {
+        word: 'soup',
+        translation: 'суп',
+        image: 'images/soup.jpg',
+        audioSrc: 'audio/soup.mp3'
+      },
+      {
+        word: 'porridge',
+        translation: 'каша',
+        image: 'images/porridge.jpg',
+        audioSrc: 'audio/porridge.mp3'
+      },
+      {
+        word: 'nut',
+        translation: 'орех',
+        image: 'images/nut.jpg',
+        audioSrc: 'audio/nut.mp3'
+      },
+      {
+        word: 'chocolate',
+        translation: 'шоколад',
+        image: 'images/chocolate.jpg',
+        audioSrc: 'audio/chocolate.mp3'
+      },
+      {
+        word: 'juice',
+        translation: 'сок',
+        image: 'images/juice.jpg',
+        audioSrc: 'audio/juice.mp3'
+      }
+    ],
+ [
+      {
+        word: 'mother',
+        translation: 'мама',
+        image: 'images/mother.jpg',
+        audioSrc: 'audio/mother.mp3'
+      },
+      {
+        word: 'father',
+        translation: 'папа',
+        image: 'images/father.jpg',
+        audioSrc: 'audio/father.mp3'
+      },
+      {
+        word: 'son',
+        translation: 'сын',
+        image: 'images/son.jpg',
+        audioSrc: 'audio/son.mp3'
+      },
+      {
+        word: 'daughter',
+        translation: 'дочь',
+        image: 'images/daughter.jpg',
+        audioSrc: 'audio/daughter.mp3'
+      },
+      {
+        word: 'grandmother',
+        translation: 'бабушка',
+        image: 'images/grandmother.jpg',
+        audioSrc: 'audio/grandmother.mp3'
+      },
+      {
+        word: 'grandfather',
+        translation: 'дедушка',
+        image: 'images/grandfather.jpg',
+        audioSrc: 'audio/grandfather.mp3'
+      },
+      {
+        word: 'uncle',
+        translation: 'дядя',
+        image: 'images/uncle.jpg',
+        audioSrc: 'audio/uncle.mp3'
+      },
+      {
+        word: 'aunt',
+        translation: 'тетя',
+        image: 'images/aunt.jpg',
+        audioSrc: 'audio/aunt.mp3'
+      }
+    ],
+ [
+      {
+        word: 'car',
+        translation: 'машина',
+        image: 'images/car.jpg',
+        audioSrc: 'audio/car.mp3'
+      },
+      {
+        word: 'bicycle',
+        translation: 'велосипед',
+        image: 'images/bicycle.jpg',
+        audioSrc: 'audio/bicycle.mp3'
+      },
+      {
+        word: 'airplane',
+        translation: 'самолет',
+        image: 'images/airplane.jpg',
+        audioSrc: 'audio/airplane.mp3'
+      },
+      {
+        word: 'train',
+        translation: 'поезд',
+        image: 'images/train.jpg',
+        audioSrc: 'audio/train.mp3'
+      },
+      {
+        word: 'ship',
+        translation: 'корабль',
+        image: 'images/ship.jpg',
+        audioSrc: 'audio/ship.mp3'
+      },
+      {
+        word: 'bike',
+        translation: 'мотоцикл',
+        image: 'images/bike.jpg',
+        audioSrc: 'audio/bike.mp3'
+      },
+      {
+        word: 'bus',
+        translation: 'автобус',
+        image: 'images/bus.jpg',
+        audioSrc: 'audio/bus.mp3'
+      },
+      {
+        word: 'rocket',
+        translation: 'ракета',
+        image: 'images/rocket.jpg',
+        audioSrc: 'audio/rocket.mp3'
+      }
+    ],
+ [
+      {
+        word: 'football',
+        translation: 'футбол',
+        image: 'images/football.jpg',
+        audioSrc: 'audio/football.mp3'
+      },
+      {
+        word: 'basketball',
+        translation: 'баскетбол',
+        image: 'images/basketball.jpg',
+        audioSrc: 'audio/basketball.mp3'
+      },
+      {
+        word: 'volleyball',
+        translation: 'волейбол',
+        image: 'images/volleyball.jpg',
+        audioSrc: 'audio/volleyball.mp3'
+      },
+      {
+        word: 'tennis',
+        translation: 'теннис',
+        image: 'images/tennis.jpg',
+        audioSrc: 'audio/tennis.mp3'
+},
+      {
+        word: 'chess',
+        translation: 'шахматы',
+        image: 'images/chess.jpg',
+        audioSrc: 'audio/chess.mp3'
+      },
+      {
+        word: 'biathlon',
+        translation: 'биатлон',
+        image: 'images/biathlon.jpg',
+        audioSrc: 'audio/biathlon.mp3'
+      },
+      {
+        word: 'baseball',
+        translation: 'бейсбол',
+        image: 'images/baseball.jpg',
+        audioSrc: 'audio/baseball.mp3'
+      },
+      {
+        word: 'rugby',
+        translation: 'регби',
+        image: 'images/rugby.jpg',
+        audioSrc: 'audio/rugby.mp3'
+      }
     ]
   ]
    
