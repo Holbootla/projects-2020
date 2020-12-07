@@ -458,4 +458,10 @@ a {
     text-shadow: 2px 2px 5px #3214f8, -2px -2px 5px #3214f8;
     font-family: 'Nerko One', cursive;
     font-size: 52px;
+    margin-bottom: 10vh;
+}
+
+.smile {
+    width: 300px;
+    height: 300px;
 }
