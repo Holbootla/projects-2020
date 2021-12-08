@@ -276,10 +276,11 @@ const blockquote = document.querySelector('blockquote');
 const quoteBtn = document.querySelector('.quote-btn');
 
 async function getQuote() {  
-    const url = `https://quote-garden.herokuapp.com/api/v2/quotes/random`;
+    const url = `https://type.fit/api/quotes`;
     const res = await fetch(url);
     const data = await res.json();
-    blockquote.textContent = data.quote.quoteText;
+    const randomQuoteIndex = Math.floor(Math.random() * (data.length - 1));
+    blockquote.textContent = `${data[randomQuoteIndex].text} (C) ${data[randomQuoteIndex].author}`;
     }
 
 document.addEventListener('DOMContentLoaded', getQuote);
